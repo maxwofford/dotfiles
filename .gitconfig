@@ -1,0 +1,17 @@
+[user]
+	email = max@hackedu.us
+	name = Max Wofford
+[alias]
+         s = status
+         c = commit -m
+         a = add
+         aa= add -A
+         b = branch 
+         cob = checkout -b
+         db = branch -D
+         up = !git fetch origin && git rebase origin/master
+         ir = !git rebase -i origin/master
+         done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && rake && git push
+         p = !git push origin master
+         d = !git diff --color | more
+        undo-commit = reset --soft HEAD^
