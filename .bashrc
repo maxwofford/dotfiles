@@ -73,12 +73,18 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
 
 # Tmux configuration
 tmux source-file ~/.tmux.conf -q
 
 # Z configuration
 . ~/.z.sh
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Go configuration
 export GOROOT=/usr/local/go
