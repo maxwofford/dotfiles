@@ -5,7 +5,7 @@ filetype plugin on
 " Set line numbers on the left
 set relativenumber
 set number
-syntax enable
+syntax on
 
 " command Ya :w! ~/.vbuf<CR>
 " command Pa :r ~/.vbuf<CR>
@@ -25,12 +25,11 @@ match OverLength /\%81v.\+/
 set hlsearch
 
 " Set colors to 256
-set t_Co=256
-let g:base16_shell_path="$HOME/.config/base16-shell"
-let base16colorspace=256 " Access colors present in 256 colorspace. Must be before colorscheme declaration
-colorscheme base16-default
-colorscheme base16-solarized
-set background=dark
+" set t_Co=256
+" let g:base16_shell_path="$HOME/.config/base16-shell"
+" let base16colorspace=256 " Access colors present in 256 colorspace. Must be before colorscheme declaration
+" set background=dark
+" colorscheme base16-default
 " Unsetting this to disable Background Color Erase for tmux
 " (https://superuser.com/questions/678905/vim-colorscheme-weirdness-for-background-not-non-text-area)
-set t_ut= 
+" set t_ut= 

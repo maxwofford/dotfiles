@@ -6,8 +6,9 @@ alias ll='ls -alF'
 
 alias tmuxa='tmux attach -t'
 alias tmuxsource='tmux source-file ~/.tmux.conf'
-alias pserv='python -m SimpleHTTPServer'
+alias pserv='python3 -m http.server'
 alias pin='ping 8.8.8.8'
-alias killport="fuser -k -n tcp "
+alias killport='fuser -k -n tcp '
+alias crone='crontab -e'
 
 echo 'aliases sourced'
