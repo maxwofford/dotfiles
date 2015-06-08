@@ -10,5 +10,6 @@ alias pserv='python3 -m http.server'
 alias pin='ping 8.8.8.8'
 alias killport='fuser -k -n tcp '
 alias crone='crontab -e'
+alias jserv='sudo browser-sync start --port $PORT --server --files "**"'
 
 echo 'aliases sourced'
