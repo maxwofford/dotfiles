@@ -34,4 +34,4 @@
         excludesfile = /home/maxw/.gitignore_global
 	editor = vim
 [push]
-	default = simple
+	default = current
