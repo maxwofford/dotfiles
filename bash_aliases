@@ -4,7 +4,7 @@ alias la='ls -a'
 alias l='ls -CF'
 alias ll='ls -alF'
 
-alias tmuxa='tmux attach -t'
+alias tmuxa='tmux attach -dt'
 alias tmuxsource='tmux source-file ~/.tmux.conf'
 alias pserv='python3 -m http.server'
 alias pin='ping 8.8.8.8'
