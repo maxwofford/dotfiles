@@ -1,6 +1,6 @@
 execute pathogen#infect()
 
-filetype plugin on
+filetype plugin indent on
 
 " Set line numbers on the left
 set relativenumber
