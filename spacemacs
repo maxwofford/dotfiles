@@ -188,7 +188,7 @@ layers configuration."
                  "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t))))
 
   ;; org-capture config
-  (setq org-default-notes-file "~/documents/org/notes.org")
+  (setq org-default-notes-file "~/documents/org/.main.org")
   (define-key global-map (kbd "C-c c") 'org-capture)
 )
 
