@@ -29,6 +29,7 @@
      magit
      markdown
      org
+     scss-mode
      shell
      syntax-checking
      themes-megapack
