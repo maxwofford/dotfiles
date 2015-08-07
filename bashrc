@@ -63,7 +63,7 @@ if [ -f ~/.tmux.conf ]; then
   tmux source-file ~/.tmux.conf -q
 fi
 
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(__git_ps1 "\[\033[01;33m\][%s]\[\033[00m\]")\$ '
 
 # have some fun with fortune telling cows
 if hash fortune 2>/dev/null; then
