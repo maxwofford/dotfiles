@@ -35,17 +35,29 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
+if [ ! -f ~/.git-completion.bash ]; then
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash
+  echo '~/.git-completion.bash downloaded!'
 fi
+. ~/.git-completion.bash
 
-if [ -f ~/.hub.bash_completion.sh ]; then
-  . ~/.hub.bash_completion.sh
+if [ ! -f ~/.hub.bash_completion.sh ]; then
+  curl https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh > ~/.hub.bash_completion.sh
+  echo '~/.hub.bash_completion.sh downloaded!'
 fi
+. ~/.hub.bash_completion.sh
 
-if [ -f ~/.z.sh ]; then
-  . ~/.z.sh
+if [ ! -f ~/.z.sh ]; then
+  curl https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/.z.sh
+  echo '~/.z.sh downloaded!'
 fi
+. ~/.z.sh
+
+if [ ! -f ~/.git-prompt.sh ]; then
+  curl https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+  echo '~/.git-prompt.sh downloaded!'
+fi
+. ~/.git-prompt.sh
 
 if [ -f ~/.tmux.conf ]; then
   tmux source-file ~/.tmux.conf -q
