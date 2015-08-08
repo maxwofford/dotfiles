@@ -31,7 +31,7 @@ shopt -s globstar
 
 [[ -f ~/.bash_specific ]] && . ~/.bash_specific
 
-[[ -f ~/.tmux.conf ]] && tmux source-file ~/.tmux.conf -q
+[[ -f ~/.tmux.conf ]] && tmux -q source-file ~/.tmux.conf
 
 if [ ! -f ~/.git-completion.bash ]; then
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash
