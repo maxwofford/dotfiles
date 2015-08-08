@@ -27,13 +27,11 @@ shopt -s globstar
 [ -x /usr/bin/lesspipe  ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # SOURCE ALL THE THINGS!!!
-if [ -f ~/.bash_specific ]; then
-  . ~/.bash_specific
-fi
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-fi
+[[ -f ~/.bash_specific ]] && . ~/.bash_specific
+
+[[ -f ~/.tmux.conf ]] && tmux source-file ~/.tmux.conf -q
 
 if [ ! -f ~/.git-completion.bash ]; then
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash
@@ -58,10 +56,6 @@ if [ ! -f ~/.git-prompt.sh ]; then
   echo '~/.git-prompt.sh downloaded!'
 fi
 . ~/.git-prompt.sh
-
-if [ -f ~/.tmux.conf ]; then
-  tmux source-file ~/.tmux.conf -q
-fi
 
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(__git_ps1 "\[\033[01;33m\][%s]\[\033[00m\]")\$ '
 
