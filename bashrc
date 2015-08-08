@@ -54,7 +54,7 @@ fi
 . ~/.z.sh
 
 if [ ! -f ~/.git-prompt.sh ]; then
-  curl https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
   echo '~/.git-prompt.sh downloaded!'
 fi
 . ~/.git-prompt.sh
