@@ -11,6 +11,7 @@ alias g='git'
 alias gb='git branch'
 alias gbdone='git bdone'
 alias gcob='git checkout -b'
+alias gcom='git commit'
 alias gd='git diff'
 alias gs='git status'
 
