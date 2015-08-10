@@ -8,6 +8,8 @@ alias ~='cd ~'
 
 # git aliases
 alias g='git'
+alias gb='git branch'
+alias gbdone='git bdone'
 alias gcob='git checkout -b'
 alias gd='git diff'
 alias gs='git status'
