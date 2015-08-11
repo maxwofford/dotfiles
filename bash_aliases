@@ -13,6 +13,7 @@ alias gbdone='git bdone'
 alias gcob='git checkout -b'
 alias gcom='git commit'
 alias gd='git diff'
+alias gl='git log'
 alias gs='git status'
 
 # ls aliases
