@@ -9,11 +9,15 @@ alias ~='cd ~'
 # git aliases
 alias g='git'
 alias gb='git branch'
+alias ga='git add'
 alias gbdone='git bdone'
 alias gcob='git checkout -b'
 alias gcom='git commit'
 alias gd='git diff'
 alias gl='git log'
+alias gpull='git pull'
+alias gpush='git push'
+alias gr='git rebase'
 alias gs='git status'
 
 # ls aliases
