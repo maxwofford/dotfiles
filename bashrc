@@ -26,6 +26,14 @@ shopt -s globstar
 #  make less more friendly for non-text input files, see lesspipe
 [ -x /usr/bin/lesspipe  ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Functions
+
+# Pretty formatting for CSV from
+# https://stackoverflow.com/questions/1875305/command-line-csv-viewer
+catcsv() {
+  column -s, -t < $1 | less -#2 -N -S
+}
+
 # SOURCE ALL THE THINGS!!!
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
