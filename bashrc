@@ -65,6 +65,17 @@ if [ ! -f ~/.git-prompt.sh ]; then
 fi
 . ~/.git-prompt.sh
 
+# Term colors
+if [ "$TERM" = "xterm" ]; then
+  export TERM=xterm-256color
+fi
+if [ "$TERM" = "screen" -o "$TERM" = "screen-256color" ]; then
+  export TERM=screen-256color
+fi
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(__git_ps1 "\[\033[01;33m\][%s]\[\033[00m\]")\$ '
 
 # have some fun with fortune telling cows
