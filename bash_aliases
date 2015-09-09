@@ -39,5 +39,6 @@ alias mkdir='mkdir -p'
 alias pin='ping 8.8.8.8'
 alias prettyjson='python3 -m json.tool'
 alias pserv='python3 -m http.server'
+alias i3reload='i3-msg -t command restart'
 
 echo 'aliases sourced'
