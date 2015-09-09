@@ -21,8 +21,12 @@
      better-defaults
      emacs-lisp
      git
+     github
+     html-mode
+     magit
      markdown
      org
+     ruby-mode
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -67,6 +71,7 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         solarized-dark
                          spacemacs-dark
                          solarized-light
                          )
