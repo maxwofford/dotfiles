@@ -5,7 +5,6 @@ filetype plugin indent on
 " Set line numbers on the left
 set relativenumber
 set number
-syntax on
 
 " command Ya :w! ~/.vbuf<CR>
 " command Pa :r ~/.vbuf<CR>
@@ -26,9 +25,11 @@ set hlsearch
 
 " Set colors to 256
 " set t_Co=256
+syntax enable
+set background=dark
+colorscheme solarized
 " let g:base16_shell_path="$HOME/.config/base16-shell"
 " let base16colorspace=256 " Access colors present in 256 colorspace. Must be before colorscheme declaration
-" set background=dark
 " colorscheme base16-default
 " Unsetting this to disable Background Color Erase for tmux
 " (https://superuser.com/questions/678905/vim-colorscheme-weirdness-for-background-not-non-text-area)
