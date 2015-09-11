@@ -120,18 +120,32 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+## exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# audio soft keys
+# Audio/volume controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2% && pactl set-sink-mute 0 0
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -- -2% && pactl set-sink-mute 0 0
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-# pause/play/etc soft keys
-#bindsym XF86AudioPlay exec clementine --play-pause
-#bindsym XF86AudioStop exec clementine --stop
-#bindsym XF86AudioPrev exec clementine --previous
-#bindsym XF86AudioNext exec clementine --next
+
+exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id nm-applet
+exec --no-startup-id gnome-sound-applet
+exec --no-startup-id unclutter
+exec /usr/libexec/gnome-settings-daemon
+
+# Create Log out, Reboot, Poweroff bindings
+mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
+        bindsym r exec reboot
+        bindsym l exit
+        bindsym p exec poweroff
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
