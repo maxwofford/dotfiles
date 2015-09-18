@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# -bash: $: command not found
+
+# https://github.com/cowboy/dotfiles/blob/master/bin/%24
+
+echo 'Ignoring $ character.'
+"$@"
