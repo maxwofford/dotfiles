@@ -178,18 +178,22 @@ layers configuration."
   (global-set-key (kbd "C-c o") ;; .main.org
                   (lambda()(interactive)(find-file "~/documents/org/.main.org")))
 
+  ;; org-archive keybinding
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c m") 'org-archive-subtree)))
+  (setq org-todo-keywords
+        '((sequence "IDEA" "TODO" "|" "DONE")))
+
   ;; org-capture templates
   (setq org-capture-templates
         (quote (("t" "Todo" entry (file org-default-notes-file)
-                 "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-                ("r" "Respond" entry (file org-default-notes-file)
-                 "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
+                 "** TODO %?\n")
                 ("n" "Note" entry (file org-default-notes-file)
-                 "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-                ("j" "Journal" entry (file+datetree "~/dev/org/journal.org")
-                 "* %?\n%U\n" :clock-in t :clock-resume t)
-                ("m" "Meeting" entry (file org-default-notes-file)
-                 "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t))))
+                 "** %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+                ("i" "Idea" entry (file org-default-notes-file)
+                 "** IDEA %?\n")
+                )))
 
   ;; org-capture config
   (setq org-default-notes-file "~/documents/org/.main.org")
