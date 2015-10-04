@@ -148,6 +148,9 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
 
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
+# binding emacs
+bindsym $mod+q exec e
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
