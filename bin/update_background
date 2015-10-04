@@ -4,15 +4,13 @@
 # the desktop depending on time of day
 
 TIME=$(date +"%H")
-if [ $TIME > 20 ]; then
+if (( $TIME > 20 )); then
   # It is night
   feh --bg-scale /usr/share/themes/Adwaita/backgrounds/good-night.jpg
+elif (( $TIME > 9 )); then
+  # It is daytime
+  feh --bg-scale /usr/share/themes/Adwaita/backgrounds/bright-day.jpg
 else
-  if [ $TIME > 9 ]; then
-    # It is daytime
-    feh --bg-scale /usr/share/themes/Adwaita/backgrounds/bright-day.jpg
-  else
-    # It is morning
-    feh --bg-scale /usr/share/themes/Adwaita/backgrounds/morning.jpg
-  fi
+  # It is morning
+  feh --bg-scale /usr/share/themes/Adwaita/backgrounds/morning.jpg
 fi
