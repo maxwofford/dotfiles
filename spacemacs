@@ -17,22 +17,28 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
-     better-defaults
+
+     ;; Per-language syntax
+     dockerfile
      emacs-lisp
-     git
-     github
-     html-mode
-     magit
+     html
      markdown
      org
-     ruby-mode
+     ruby
      ruby-on-rails
      shell
-     shell-scripts
-     spotify
      syntax-checking
+     ;; Other modes
+     auto-completion
+     better-defaults
+     colors
+     git
+     github
+     magit
+     spell-checking
+     spotify
      version-control
+     wakatime
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -160,35 +166,42 @@ before layers configuration."
    dotspacemacs-remap-Y-to-y$ nil
    )
   ;; User initialization goes here
-  (setq-default
-   ;; Indent two spaces
-   js-indent-level 2
-   sh-basic-offset 2
-   sh-indentation 2
-   web-mode-markup-indent-offset 2
-   web-mode-css-indent-offset 2
-   web-mode-code-indent-offet 2
-   )
+  )
+(defun dotspacemacs/user-init ()
+  "Initialization function for user code.
+It is called immediately after `dotspacemacs/init'.  You are free to put any
+user code."
   )
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
 
-  ;; shortcut keybindings
+  ;; Set indentation to 2
+  (setq-default js-indent-level 2)
+  (setq-default sh-basic-offset 2)
+  (setq-default sh-indentation 2)
+  (setq-default web-mode-code-indent-offet 2)
+  (setq-default web-mode-css-indent-offset 2)
+  (setq-default web-mode-markup-indent-offset 2)
+  ;; Keybindings to activley used files
   (global-set-key (kbd "C-c e") ;; .emacs
-                  (lambda()(interactive)(find-file "~/.spacemacs")))
+                  (lambda()
+                    (interactive)(find-file "~/.spacemacs")))
   (global-set-key (kbd "C-c o") ;; .main.org
-                  (lambda()(interactive)(find-file "~/documents/org/.main.org")))
-
+                  (lambda()
+                    (interactive)(find-file "~/documents/org/.main.org")))
+  ;; Org-mode configuration-----------------------------------------------------
+  (setq org-agenda-files '("~/documents/org"))
+  (setq org-agenda-span 'fortnight)
+  ;; org-mode todo states
+  (setq org-todo-keywords
+        '((sequence "IDEA" "TODO" "|" "DONE")))
   ;; org-archive keybinding
   (add-hook 'org-mode-hook
             (lambda ()
               (local-set-key (kbd "C-c m") 'org-archive-subtree)))
-  (setq org-todo-keywords
-        '((sequence "IDEA" "TODO" "|" "DONE")))
-
   ;; org-capture templates
   (setq org-capture-templates
         (quote (("t" "Todo" entry (file org-default-notes-file)
@@ -198,15 +211,12 @@ layers configuration."
                 ("i" "Idea" entry (file org-default-notes-file)
                  "** IDEA %?\n")
                 )))
-
   ;; org-capture config
   (setq org-default-notes-file "~/documents/org/.main.org")
   (define-key global-map (kbd "C-c c") 'org-capture)
-
   ;; associate shell-script-mode with .sh files
   (add-to-list 'auto-mode-alist '("\\.sh\\'" . shell-script-mode))
   )
-
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -219,11 +229,13 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
- '(org-agenda-files (quote ("~/documents/org/.main.org")))
+ '(org-agenda-files (quote ("~/documents/org/.main.org")) t)
  '(package-selected-packages
    (quote
     (toc-org smeargle org-repo-todo org-present org-pomodoro org-bullets mmm-mode markdown-toc magit htmlize helm-gitignore helm-flyspell helm-c-yasnippet gitconfig-mode gitattributes-mode git-timemachine git-messenger flycheck-pos-tip evil-org company-statistics company-quickhelp auto-yasnippet ac-ispell auto-complete company flycheck yasnippet request gitignore-mode magit-popup git-commit with-editor markdown-mode alert log4e gntp macrostep elisp-slime-nav diff-hl window-numbering volatile-highlights vi-tilde-fringe smooth-scrolling rfringe rainbow-delimiters powerline popup pcre2el paradox page-break-lines open-junk-file neotree move-text linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-anything highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag guide-key-tip google-translate golden-ratio gh-md fringe-helper flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-indent-textobject evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu clean-aindent-mode buffer-move auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link ace-jump-mode avy names anzu iedit smartparens highlight flx pos-tip guide-key s popwin projectile helm helm-core async parent-mode spinner pkg-info epl evil-leader evil use-package bind-key dash)))
- '(ring-bell-function (quote ignore) t))
+ '(ring-bell-function (quote ignore) t)
+ '(wakatime-api-key "7c99663d-d356-4b3e-bd86-70459c5aed4a")
+ '(wakatime-cli-path "/usr/local/bin/wakatime"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
