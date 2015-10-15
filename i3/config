@@ -121,7 +121,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 ## exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Audio/volume controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2% && pactl set-sink-mute 0 0
@@ -135,18 +135,18 @@ exec --no-startup-id unclutter
 exec /usr/libexec/gnome-settings-daemon
 exec update_background
 
-# Create Log out, Reboot, Poweroff bindings
-mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
-        bindsym r exec reboot
-        bindsym l exit
-        bindsym p exec poweroff
+# # Create Log out, Reboot, Poweroff bindings
+# mode "(R)estart, R(e)load, (L)ogout" {
+#         bindsym r restart
+#         bindsym e reload
+#         bindsym l exit
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+#         # back to normal: Enter or Escape
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+# }
 
-bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
+# bindsym $mod+Shift+e mode "(R)estart, R(e)load, (L)ogout"
 
 # binding emacs
 bindsym $mod+q exec e
