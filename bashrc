@@ -91,3 +91,6 @@ if hash fortune 2>/dev/null; then
   fi
 fi
 echo '.bashrc sourced!'
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
