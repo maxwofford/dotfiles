@@ -133,7 +133,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id unclutter
 exec /usr/libexec/gnome-settings-daemon
-exec update_background
+exec set-background
 
 # # Create Log out, Reboot, Poweroff bindings
 # mode "(R)estart, R(e)load, (L)ogout" {

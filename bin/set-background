@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# This script sets the desktop background. It is sourced at startup.
+
+feh --bg-scale /usr/share/backgrounds/Solarized_Mountains_by_Thefan_Sunjaya.png
