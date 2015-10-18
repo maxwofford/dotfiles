@@ -39,7 +39,9 @@ catcsv() {
 
 [[ -f ~/.bash_specific ]] && . ~/.bash_specific
 
-[[ -f ~/.tmux.conf ]] && tmux -q source-file ~/.tmux.conf
+if tmux info &> /dev/null; then
+  [[ -f ~/.tmux.conf ]] && tmux -q source-file ~/.tmux.conf
+fi
 
 if [ ! -f ~/.git-completion.bash ]; then
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash
