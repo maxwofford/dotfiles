@@ -128,12 +128,17 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2% && pactl set-sink-
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -- -2% && pactl set-sink-mute 0 0
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
+# Startup exec
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id unclutter
-exec /usr/libexec/gnome-settings-daemon
-exec set-background
+exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id parcellite
+exec --no-startup-id set-background
+exec --no-startup-id i3-msg 'workspace 1; exec google-chrome'
+exec --no-startup-id i3-msg 'workspace 9; exec spotify'
+exec --no-startup-id i3-msg 'workspace 10; exec emacs'
 
 # # Create Log out, Reboot, Poweroff bindings
 # mode "(R)estart, R(e)load, (L)ogout" {
