@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/home/maxw/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/home/maxw/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -97,3 +97,17 @@ if [ ! -f ~/.z.sh ]; then
   echo '~/.z.sh downloaded!'
 fi
 . ~/.z.sh
+
+# have some fun with fortune telling cows
+if hash fortune 2>/dev/null; then
+  if hash cowsay 2>/dev/null; then
+    if hash lolcat 2>/dev/null; then
+      fortune | cowsay | lolcat
+    else
+      fortune | cowsay
+    fi
+  else
+    fortune
+  fi
+fi
+
