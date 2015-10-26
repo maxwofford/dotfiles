@@ -29,7 +29,7 @@
      ruby-on-rails
      shell
      syntax-checking
-     ;; Other modes
+     ;; Other layers
      auto-completion
      better-defaults
      colors
