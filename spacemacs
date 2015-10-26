@@ -22,6 +22,7 @@
      dockerfile
      emacs-lisp
      html
+     latex
      markdown
      org
      ruby
@@ -218,6 +219,8 @@ layers configuration."
   (define-key global-map (kbd "C-c c") 'org-capture)
   ;; associate shell-script-mode with .sh files
   (add-to-list 'auto-mode-alist '("\\.sh\\'" . shell-script-mode))
+  ;; full document previews
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
