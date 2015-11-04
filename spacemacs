@@ -197,7 +197,6 @@ layers configuration."
                     (interactive)(find-file "~/documents/org/.main.org")))
   ;; Org-mode configuration-----------------------------------------------------
   (setq org-agenda-files '("~/documents/org"))
-  (setq org-agenda-span 'fortnight)
   ;; org-mode todo states
   (setq org-todo-keywords
         '((sequence "IDEA" "TODO" "NEXT" "|" "DONE")))
