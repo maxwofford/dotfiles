@@ -200,7 +200,7 @@ layers configuration."
   (setq org-agenda-span 'fortnight)
   ;; org-mode todo states
   (setq org-todo-keywords
-        '((sequence "IDEA" "TODO" "|" "DONE")))
+        '((sequence "IDEA" "TODO" "NEXT" "|" "DONE")))
   ;; org-archive keybinding
   (add-hook 'org-mode-hook
             (lambda ()
@@ -209,6 +209,8 @@ layers configuration."
   (setq org-capture-templates
         (quote (("t" "Todo" entry (file org-default-notes-file)
                  "** TODO %?\n")
+                ("e" "Next" entry (file org-default-notes-file)
+                 "** NEXT %?\n")
                 ("n" "Note" entry (file org-default-notes-file)
                  "** %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
                 ("i" "Idea" entry (file org-default-notes-file)
