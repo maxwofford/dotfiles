@@ -210,6 +210,8 @@ layers configuration."
                  "** TODO %?\n")
                 ("e" "Next" entry (file org-default-notes-file)
                  "** NEXT %?\n")
+                ("r" "Retrospective" entry (file org-default-notes-file)
+                 "** %TTeam retrospective\n*** Topics to bring up\n- %?")
                 ("n" "Note" entry (file org-default-notes-file)
                  "** %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
                 ("i" "Idea" entry (file org-default-notes-file)
