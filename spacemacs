@@ -199,7 +199,8 @@ layers configuration."
   (setq org-agenda-files '("~/documents/org"))
   ;; org-mode todo states
   (setq org-todo-keywords
-        '((sequence "IDEA" "TODO" "NEXT" "|" "DONE")))
+        (quote ((sequence "IDEA" "TODO" "NEXT" "|" "DONE")
+                (sequence "MEET"))))
   ;; org-archive keybinding
   (add-hook 'org-mode-hook
             (lambda ()
@@ -210,6 +211,8 @@ layers configuration."
                  "** TODO %?\n")
                 ("e" "Next" entry (file org-default-notes-file)
                  "** NEXT %?\n")
+                ("m" "Meeting" entry (file org-default-notes-file)
+                 "** MEET %?%t\n")
                 ("r" "Retrospective" entry (file org-default-notes-file)
                  "** %TTeam retrospective\n*** Topics to bring up\n- %?")
                 ("n" "Note" entry (file org-default-notes-file)
