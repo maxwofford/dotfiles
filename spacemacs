@@ -29,6 +29,7 @@
      ruby
      ruby-on-rails
      shell
+     shell-scripts
      syntax-checking
      ;; Other layers
      auto-completion
