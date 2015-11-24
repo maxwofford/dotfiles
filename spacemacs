@@ -205,6 +205,8 @@ layers configuration."
   (add-hook 'org-mode-hook
             (lambda ()
               (local-set-key (kbd "C-c m") 'org-archive-subtree)))
+  ;; org-capture-mode starts in evil-insert-state
+  (add-hook 'org-capture-mode-hook 'evil-insert-state)
   ;; org-capture templates
   (setq org-capture-templates
         (quote (("t" "Todo" entry (file org-default-notes-file)
