@@ -22,6 +22,7 @@
      dockerfile
      emacs-lisp
      html
+     javascript
      latex
      markdown
      org
