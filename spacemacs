@@ -202,7 +202,7 @@ layers configuration."
   (setq org-agenda-files '("~/documents/org"))
   ;; org-mode todo states
   (setq org-todo-keywords
-        (quote ((sequence "IDEA" "TODO" "NEXT" "|" "DONE")
+        (quote ((sequence "IDEA" "TODO" "NEXT" "|" "DONE" "CLOSE")
                 (sequence "MEET"))))
   ;; org-archive keybinding
   (add-hook 'org-mode-hook
