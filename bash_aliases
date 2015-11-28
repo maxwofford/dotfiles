@@ -31,7 +31,7 @@ alias tmuxa='tmux attach -dt'
 alias tmuxsource='tmux source-file ~/.tmux.conf'
 
 # misc aliases
-alias crone='crontab -e'
+alias crone="$EDITOR ~/.dotfiles/crontab && crontab ~/.dotfiles/crontab"
 alias installhistory='cat /var/log/dpkg.log | grep "\ install\ "'
 alias jserv='sudo browser-sync start --port $PORT --server --files "**"'
 alias killport='fuser -k -n tcp '
