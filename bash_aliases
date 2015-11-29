@@ -27,6 +27,7 @@ alias ll='ls -alF'
 alias ls='ls --color=auto'
 
 # tmux aliases
+alias tmux='tmux -2'
 alias tmuxa='tmux attach -dt'
 alias tmuxsource='tmux source-file ~/.tmux.conf'
 
