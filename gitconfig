@@ -1,6 +1,10 @@
 [user]
 	email = max@maxwofford.com
 	name = Max Wofford
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
 [alias]
         s = status
         c = commit -m
