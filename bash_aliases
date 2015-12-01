@@ -1,5 +1,5 @@
 # alias aliases
-alias ae='vim ~/.bash_aliases'
+alias ae="$EDITOR ~/.bash_aliases"
 alias ar='. ~/.bash_aliases'
 
 # cd aliases
