@@ -28,7 +28,6 @@
      org
      ruby
      ruby-on-rails
-     shell
      shell-scripts
      syntax-checking
      ;; Other layers
@@ -39,6 +38,10 @@
      git
      github
      magit
+     (shell :variables
+            shell-default-height 30
+            ;; shell-default-shell 'zsh
+            )
      spell-checking
      spotify
      themes-megapack
