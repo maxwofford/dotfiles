@@ -44,3 +44,16 @@ alias pserv='python3 -m http.server'
 alias i3reload='i3-msg -t command restart'
 alias fontreload='fc-cache -f -v'
 alias hubot='bin/hubot'
+
+# function aliases
+## transfer service from https://github.com/dutchcoders/transfer.sh/
+transfer() {
+  # write to output to tmpfile because of progress bar
+  tmpfile=$( mktemp -t transferXXX )
+  curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile
+  cat $tmpfile
+  cat $tmpfile | xclip -selection clipboard
+  rm -f $tmpfile
+}
+
+alias transfer=transfer
