@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Run this in a directory to batch convert all pdf files to epub
+
+if hash ebook-convert 2>/dev/null; then
+  for file in *.pdf; do
+    bookname=$(echo ${file%.pdf})
+    ebook-convert "$file" "$bookname.epub" --enable-heuristics
+    mv $file "$file.bak"
+  done
+else
+  echo "You don't have ebook-convert installed!"
+fi
