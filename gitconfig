@@ -1,6 +1,6 @@
 [user]
-	email = max@maxwofford.com
-	name = Max Wofford
+  email = max@maxwofford.com
+  name = Max Wofford
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -39,6 +39,6 @@
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
 [core]
   excludesfile = /home/maxw/.gitignore_global
-	editor = vim
+  editor = vim
 [push]
-	default = current
+  default = current
