@@ -35,6 +35,7 @@
      auto-completion
      better-defaults
      colors
+     floobits
      git
      github
      magit
