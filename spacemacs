@@ -41,6 +41,7 @@
      magit
      spell-checking
      spotify
+     themes-megapack
      version-control
      wakatime
      )
