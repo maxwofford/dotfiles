@@ -21,3 +21,4 @@
 #
 # m h  dom mon dow   command
 
+*/5 * * * * batterynotifications
