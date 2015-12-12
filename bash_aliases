@@ -44,6 +44,7 @@ alias pserv='python3 -m http.server'
 alias i3reload='i3-msg -t command restart'
 alias fontreload='fc-cache -f -v'
 alias hubot='bin/hubot'
+alias record='asciinema rec'
 
 # function aliases
 ## transfer service from https://github.com/dutchcoders/transfer.sh/
