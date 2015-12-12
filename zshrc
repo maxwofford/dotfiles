@@ -113,6 +113,25 @@ if [ ! -f ~/.z.sh ]; then
 fi
 . ~/.z.sh
 
+if [ -z "$ZPATH/zsh-syntax-highlighting" ]; then
+  git clone git://github.com/zsh-users/zsh-syntax-highlighting "$ZPATH/zsh-syntax-highlighting"
+fi
+source "$ZPATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+if [ -z "$ZPATH/zsh-autosuggestions" ]; then
+  git clone git://github.com/tarruda/zsh-autosuggestions "$ZPATH/zsh-autosuggestions"
+fi
+source "$ZPATH/zsh-autosuggestions/autosuggestions.zsh"
+
+# Enable autosuggestions
+zle-line-init() {
+  zle autosuggest-start
+}
+zle -N zle-line-init
+
+# Accept autosuggestions on 'tab'
+bindkey "^I" autosuggest-execute-suggestion
+
 # have some fun with fortune telling cows
 if hash fortune 2>/dev/null; then
   if hash cowsay 2>/dev/null; then
