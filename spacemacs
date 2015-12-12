@@ -206,6 +206,8 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  ;; Set powerline seperator
+  (setq powerline-default-separator 'wave)
   ;; Set indentation to 2
   (setq-default js-indent-level 2)
   (setq-default sh-basic-offset 2)
