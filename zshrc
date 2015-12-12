@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/maxw/.oh-my-zsh
+export ZPATH=/home/maxw/.zsh
+export ZSH=/home/maxw/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -56,7 +57,21 @@ plugins=(git)
 export PATH="/home/maxw/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+# Make sure there is a .zsh folder to put our scripts in
+if [ -z "$ZPATH" ]; then
+  mkdir "$ZPATH"
+fi
+
+# Make sure there is a .oh-my-zsh folder to put our scripts in
+if [ -z "$ZSH" ]; then
+  mkdir "$ZSH"
+fi
+
+# Source oh-my-zsh
+if [ -z "$ZSH" ]; then
+  git clone https://github.com/robbyrussell/oh-my-zsh "$ZSH"
+fi
+source "$ZSH/oh-my-zsh.sh"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
