@@ -245,7 +245,7 @@ layers configuration. You are free to put any user code."
                 ("r" "Retrospective" entry (file org-default-notes-file)
                  "** %TTeam retrospective\n*** Topics to bring up\n- %?")
                 ("n" "Note" entry (file org-default-notes-file)
-                 "** %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+                 "** %? :NOTE:\n")
                 ("i" "Idea" entry (file org-default-notes-file)
                  "** IDEA %?\n")
                 )))
