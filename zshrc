@@ -129,9 +129,6 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
-# Accept autosuggestions on 'tab'
-bindkey "^I" autosuggest-execute-suggestion
-
 # have some fun with fortune telling cows
 if hash fortune 2>/dev/null; then
   if hash cowsay 2>/dev/null; then
