@@ -107,16 +107,12 @@ fi
 [[ -f ~/.bash_specific ]] && source ~/.bash_specific
 
 # Z.sh file searching
+# Only source this file if it exists
 if [ ! -f ~/.z.sh ]; then
   curl https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/.z.sh
   echo '~/.z.sh downloaded!'
 fi
 . ~/.z.sh
-
-if [ -z "$ZPATH/zsh-syntax-highlighting" ]; then
-  git clone git://github.com/zsh-users/zsh-syntax-highlighting "$ZPATH/zsh-syntax-highlighting"
-fi
-source "$ZPATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # have some fun with fortune telling cows
 if hash fortune 2>/dev/null; then
