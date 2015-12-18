@@ -208,12 +208,19 @@ layers configuration. You are free to put any user code."
   ;; Set powerline seperator
   (setq powerline-default-separator 'wave)
   ;; Set indentation to 2
-  (setq-default js-indent-level 2)
-  (setq-default sh-basic-offset 2)
-  (setq-default sh-indentation 2)
-  (setq-default web-mode-code-indent-offet 2)
-  (setq-default web-mode-css-indent-offset 2)
-  (setq-default web-mode-markup-indent-offset 2)
+  (setq
+   javascript-indent-level 2
+   javascript-basic-offset 2
+   js-indent-level 2
+   js-basic-offset 2
+   js2-indent-level 2
+   js2-basic-offset 2
+   sh-basic-offset 2
+   sh-indentation 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offet 2
+   css-indent-offset 2)
   ;; Keybindings to activley used files
   (global-set-key (kbd "C-c e") ;; .spacemacs configuration file
                   (lambda()
