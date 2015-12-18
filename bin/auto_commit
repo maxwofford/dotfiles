@@ -10,4 +10,4 @@
 # This script takes a snapshot of the current directory
 
 COMMIT="Autocommit on $(date +%Y-%m-%d) at $(date +%H:%M)" && git add . && git commit -m "$COMMIT"
-git pull --rebase && git push origin master
+git pull --rebase origin master && git push origin master
