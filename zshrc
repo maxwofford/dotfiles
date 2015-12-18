@@ -118,17 +118,6 @@ if [ -z "$ZPATH/zsh-syntax-highlighting" ]; then
 fi
 source "$ZPATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-if [ -z "$ZPATH/zsh-autosuggestions" ]; then
-  git clone git://github.com/tarruda/zsh-autosuggestions "$ZPATH/zsh-autosuggestions"
-fi
-source "$ZPATH/zsh-autosuggestions/autosuggestions.zsh"
-
-# Enable autosuggestions
-zle-line-init() {
-  zle autosuggest-start
-}
-zle -N zle-line-init
-
 # have some fun with fortune telling cows
 if hash fortune 2>/dev/null; then
   if hash cowsay 2>/dev/null; then
