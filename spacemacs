@@ -32,6 +32,7 @@ values."
      org
      ruby
      ruby-on-rails
+     yaml
      ;; Other  layers
      auto-completion
      better-defaults
