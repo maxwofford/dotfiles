@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Generate a short, flashy gif of any string.
+
+# Required: text-meme-cli, imgur
+
+# A selection of colors that look good with white text
+colors=('db4b4f' '3b67a8' '09ad5e' '303030' '794aa1' 'e37717');
+# Choose one of the colors to use
+tmpcolor=$(echo ${colors[$[RANDOM %${#colors[@]}]]})
+tmpfile=$(mktemp -t memeXXX)
+text-meme "$@" --filename=$tmpfile --background=#$tmpcolor
+imgur $tmpfile.gif
+rm -f $tmpfile
