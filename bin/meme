@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Generate a short, flashy gif of any string.
+# Demo: https://i.imgur.com/b8wG9nX.gif
 
 # Required: text-meme-cli, imgur
 
