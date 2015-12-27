@@ -1,3 +1,9 @@
+# Aliases adapted from
+# https://github.com/japacible/config
+# https://github.com/zachlatta/dotfiles
+# http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/
+# https://github.com/myfreeweb/zshuery/blob/master/zshuery.sh
+
 # alias aliases
 alias ae="$EDITOR ~/.bash_aliases"
 alias ar='. ~/.bash_aliases'
