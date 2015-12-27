@@ -74,6 +74,10 @@ alias i3reload='i3-msg -t command restart'
 alias fontreload='fc-cache -f -v'
 alias record='asciinema rec'
 
+# remotes aliases
+alias meowth='mosh maxw@meowth.servers.hackedu.us'
+alias palm='mosh root@192.241.232.211'
+
 # function aliases
 ## transfer service from https://github.com/dutchcoders/transfer.sh/
 transfer() {
