@@ -38,6 +38,7 @@ alias ls='ls --color=auto'
 alias l='ls -CF'
 alias la='ls -a'
 alias ll='ls -alF'
+alias mkdir='mkdir -p'
 
 # tmux aliases
 alias tmux='tmux -2'
@@ -68,7 +69,6 @@ alias hubot='bin/hubot'
 # misc aliases
 alias installhistory='cat /var/log/dpkg.log | grep "\ install\ "'
 alias killport='fuser -k -n tcp '
-alias mkdir='mkdir -p'
 alias pin='ping 8.8.8.8'
 alias i3reload='i3-msg -t command restart'
 alias fontreload='fc-cache -f -v'
@@ -96,8 +96,7 @@ loadnvm() {
 }
 
 # Extract a file
-function extract()
-{
+function extract() {
   if [ -f $1 ] ; then
     case $1 in
       *.7z)        7z x $1           ;;
