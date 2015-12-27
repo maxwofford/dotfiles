@@ -80,18 +80,5 @@ fi
 
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(__git_ps1 "\[\033[01;33m\][%s]\[\033[00m\]")\$ '
 
-# have some fun with fortune telling cows
-if hash fortune 2>/dev/null; then
-  if hash cowsay 2>/dev/null; then
-    if hash lolcat 2>/dev/null; then
-      fortune | cowsay | lolcat
-    else
-      fortune | cowsay
-    fi
-  else
-    fortune
-  fi
-fi
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
