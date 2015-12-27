@@ -226,11 +226,11 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-c e") ;; .spacemacs configuration file
                   (lambda()
                     (interactive)(find-file "~/.spacemacs")))
-  (global-set-key (kbd "C-c o") ;; .main.org
+  (global-set-key (kbd "C-c o") ;; main.org
                   (lambda()
-                    (interactive)(find-file "~/documents/org/.main.org")))
+                    (interactive)(find-file "~/documents/org/main.org")))
   ;; Org-mode configuration-----------------------------------------------------
-  (setq org-agenda-files '("~/documents/org"))
+  (setq org-agenda-files '("~/documents/org/"))
   ;; org-mode todo states
   (setq org-todo-keywords
         (quote ((sequence "IDEA" "TODO" "NEXT" "|" "DONE" "CLOSE")
