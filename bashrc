@@ -35,7 +35,7 @@ catcsv() {
 }
 
 # SOURCE ALL THE THINGS!!!
-[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+[[ -f ~/.aliases ]] && . ~/.aliases
 
 [[ -f ~/.bash_specific ]] && . ~/.bash_specific
 

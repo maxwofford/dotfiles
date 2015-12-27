@@ -2,15 +2,17 @@
 alias ae="$EDITOR ~/.bash_aliases"
 alias ar='. ~/.bash_aliases'
 
-# cd aliases
+# movement aliases
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 alias ~='cd ~'
 
 # git aliases
 alias g='git'
-alias gb='git branch -v'
-alias gr='git remote -v'
 alias ga='git add'
+alias gb='git branch -v'
 alias gbdone='git bdone'
 alias gcob='git checkout -b'
 alias gcom='git commit'
@@ -19,38 +21,55 @@ alias gl='git log'
 alias gpull='git pull'
 alias gpush='git push'
 alias gr='git rebase'
+alias gr='git remote -v'
 alias gs='git status'
 
 # ls aliases
+alias ls='ls --color=auto'
 alias l='ls -CF'
 alias la='ls -a'
 alias ll='ls -alF'
-alias ls='ls --color=auto'
 
 # tmux aliases
 alias tmux='tmux -2'
 alias tmuxa='tmux attach -dt'
 alias tmuxsource='tmux source-file ~/.tmux.conf'
 
-# misc aliases
+# browser aliases
+alias chrome='google-chrome'
+alias os='uname -srm'
+alias now='date'
+
+# pakage aliases
+alias agi='sudo apt-get install'
+alias agr='sudo apt-get remove'
+alias agu='sudo apt-get update'
+alias aps='aptitude search'
+
+# info aliases
+alias ip='wget -qO- icanhazip.com'
+
+# dev aliases
+alias prettyjson='python3 -m json.tool'
+alias pserv='python3 -m http.server'
 alias crone="$EDITOR ~/.dotfiles/crontab && crontab ~/.dotfiles/crontab"
-alias installhistory='cat /var/log/dpkg.log | grep "\ install\ "'
 alias jserv='sudo browser-sync start --port $PORT --server --files "**"'
+alias hubot='bin/hubot'
+
+# misc aliases
+alias installhistory='cat /var/log/dpkg.log | grep "\ install\ "'
 alias killport='fuser -k -n tcp '
 alias mkdir='mkdir -p'
 alias pin='ping 8.8.8.8'
-alias prettyjson='python3 -m json.tool'
-alias pserv='python3 -m http.server'
 alias i3reload='i3-msg -t command restart'
 alias fontreload='fc-cache -f -v'
-alias hubot='bin/hubot'
 alias record='asciinema rec'
 
 # function aliases
 ## transfer service from https://github.com/dutchcoders/transfer.sh/
 transfer() {
   # write to output to tmpfile because of progress bar
-  tmpfile=$( mktemp -t transferXXX )
+  local tmpfile=$( mktemp -t transferXXX )
   curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile
   cat $tmpfile
   cat $tmpfile | xclip -selection clipboard
