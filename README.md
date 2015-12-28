@@ -1,8 +1,9 @@
 # Dotfiles
 
-Repo of my personal aliases and bash configurations that I use
-[rcm](https://github.com/thoughtbot/rcm) to manage. Feel free to fork or pull
-request!
+This is my configuration repo. There are many like it, but this one is mine.
+
+I use [rcm](https://github.com/thoughtbot/rcm) to manage it. Feel free to fork
+or pull request!
 
 ## License
 
