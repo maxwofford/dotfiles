@@ -5,8 +5,8 @@
 # https://github.com/myfreeweb/zshuery/blob/master/zshuery.sh
 
 # alias aliases
-alias ae="$EDITOR ~/.bash_aliases"
-alias ar='. ~/.bash_aliases'
+alias ae="$EDITOR ~/.aliases"
+alias ar='. ~/.aliases'
 
 # movement aliases
 alias ..='cd ..'
