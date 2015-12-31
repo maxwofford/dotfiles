@@ -1,3 +1,9 @@
+# Config =======================================================================
+
+PATH=/home/maxw/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+DOCUMENTS=/home/maxw/documents
+DROPBOX=/home/maxw/Dropbox
+BOOKS=$DROPBOX/books
 
 # Jobs =========================================================================
 
@@ -9,7 +15,7 @@
 */5 * * * * cd $DOCUMENTS && auto_commit
 
 # Convert any pdf books to epub and add to Dropbox
-0 * * * * cd $BOOKS_DIR && pdf-to-epub
+0 * * * * cd $BOOKS && pdf-to-epub
 
 # crontabs should end with an extra newline ====================================
 
