@@ -246,12 +246,8 @@ layers configuration. You are free to put any user code."
   (setq org-capture-templates
         (quote (("t" "Todo" entry (file org-default-notes-file)
                  "** TODO %?\n")
-                ("e" "Next" entry (file org-default-notes-file)
-                 "** NEXT %?\n")
                 ("m" "Meeting" entry (file org-default-notes-file)
                  "** MEET %?%t\n")
-                ("r" "Retrospective" entry (file org-default-notes-file)
-                 "** %TTeam retrospective\n*** Topics to bring up\n- %?")
                 ("n" "Note" entry (file org-default-notes-file)
                  "** %? :NOTE:\n")
                 ("i" "Idea" entry (file org-default-notes-file)
