@@ -230,7 +230,8 @@ layers configuration. You are free to put any user code."
                   (lambda()
                     (interactive)(find-file "~/documents/org/main.org")))
   ;; Org-mode configuration-----------------------------------------------------
-  (setq org-agenda-files '("~/documents/org/"))
+  (setq org-agenda-files '("~/documents/org")
+        org-startup-folded t)
   ;; org-mode todo states
   (setq org-todo-keywords
         (quote ((sequence "IDEA" "TODO" "NEXT" "|" "DONE" "CLOSE")
