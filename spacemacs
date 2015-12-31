@@ -254,7 +254,7 @@ layers configuration. You are free to put any user code."
                  "** IDEA %?\n")
                 )))
   ;; org-capture config
-  (setq org-default-notes-file "~/documents/org/.main.org")
+  (setq org-default-notes-file "~/documents/org/main.org")
   (define-key global-map (kbd "C-c c") 'org-capture)
   ;; associate shell-script-mode with .sh files
   (add-to-list 'auto-mode-alist '("\\.sh\\'" . shell-script-mode))
