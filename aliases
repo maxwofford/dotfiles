@@ -73,6 +73,7 @@ alias pin='ping 8.8.8.8'
 alias i3reload='i3-msg -t command restart'
 alias fontreload='fc-cache -f -v'
 alias record='asciinema rec'
+alias open='nautilus'
 
 # remotes aliases
 alias meowth='mosh maxw@meowth.servers.hackedu.us'
