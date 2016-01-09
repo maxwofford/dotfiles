@@ -207,6 +207,8 @@ user code."
 layers configuration. You are free to put any user code."
   ;; Set powerline seperator
   (setq powerline-default-separator 'wave)
+  ;; Auto close brackets
+  (setq electric-pair-mode 1)
   ;; Set indentation to 2
   (setq
    css-indent-offset 2
