@@ -9,7 +9,7 @@
 colors=('db4b4f' '3b67a8' '09ad5e' '303030' '794aa1' 'e37717');
 # Choose one of the colors to use
 tmpcolor=$(echo ${colors[$[RANDOM %${#colors[@]}]]})
-tmpfile=$(mktemp -t memeXXX)
+tmpfile="$(mktemp -t memeXXX).gif"
 text-meme "$@" --filename=$tmpfile --background=#$tmpcolor
-imgur $tmpfile.gif
+imgur $tmpfile
 rm -f $tmpfile
