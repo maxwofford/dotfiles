@@ -3,6 +3,7 @@
 # https://github.com/zachlatta/dotfiles
 # http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/
 # https://github.com/myfreeweb/zshuery/blob/master/zshuery.sh
+# https://github.com/ZucchiniZe/dotfiles
 
 # alias aliases
 alias ae="$EDITOR ~/.aliases"
