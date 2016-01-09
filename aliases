@@ -91,13 +91,6 @@ transfer() {
   rm -f $tmpfile
 }
 
-# Load nvm
-loadnvm() {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-  nvm use node
-}
-
 # Extract a file
 function extract() {
   if [ -f $1 ] ; then
