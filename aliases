@@ -122,3 +122,8 @@ function extract() {
     echo "'$1' is not a valid file"
   fi
 }
+
+function expose() {
+  echo 'https://maxdev.localtunnel.me' | xclip -selection clipboard
+  lt --subdomain maxdev --port $1
+}
