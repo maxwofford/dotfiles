@@ -134,6 +134,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id unclutter
 exec --no-startup-id set-background
+exec --no-startup-id dropbox
 exec --no-startup-id i3-msg 'workspace 1; exec google-chrome'
 exec --no-startup-id i3-msg 'workspace 2; exec slack'
 exec --no-startup-id i3-msg 'workspace 9; exec spotify'
