@@ -75,6 +75,7 @@ alias i3reload='i3-msg -t command restart'
 alias fontreload='fc-cache -f -v'
 alias record='asciinema rec'
 alias open='nautilus'
+alias send-sms='twilio-sms'
 
 # remotes aliases
 alias meowth='mosh maxw@meowth.servers.hackedu.us'
