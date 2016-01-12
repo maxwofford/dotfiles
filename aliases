@@ -82,7 +82,7 @@ alias send-sms='twilio-sms'
 
 # remotes aliases
 alias meowth='mosh maxw@meowth.servers.hackedu.us'
-alias palm='mosh root@192.241.232.211'
+alias palm='mosh maxw@192.241.232.211'
 
 # function aliases
 ## transfer service from https://github.com/dutchcoders/transfer.sh/
