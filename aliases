@@ -57,6 +57,9 @@ alias agr='sudo apt-get remove'
 alias agu='sudo apt-get update'
 alias aps='aptitude search'
 
+# terminal aliases
+alias :q='exit'
+
 # info aliases
 alias ip='wget -qO- icanhazip.com'
 
