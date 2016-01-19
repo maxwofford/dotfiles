@@ -124,3 +124,7 @@ function expose() {
   echo 'https://maxdev.localtunnel.me' | xclip -selection clipboard
   lt --subdomain maxdev --port $1
 }
+
+gclone() {
+  git clone $1 && cd $(basename $1)
+}
