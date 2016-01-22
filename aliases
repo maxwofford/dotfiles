@@ -48,8 +48,6 @@ alias tmuxsource='tmux source-file ~/.tmux.conf'
 
 # browser aliases
 alias chrome='google-chrome'
-alias os='uname -srm'
-alias now='date'
 
 # pakage aliases
 alias agi='sudo apt-get install'
@@ -61,6 +59,8 @@ alias aps='aptitude search'
 alias :q='exit'
 
 # info aliases
+alias os='uname -srm'
+alias now='date'
 alias ip='wget -qO- icanhazip.com'
 
 # dev aliases
