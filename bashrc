@@ -67,6 +67,12 @@ if [ ! -f ~/.git-prompt.sh ]; then
 fi
 . ~/.git-prompt.sh
 
+if [ ! -f ~/.concurrent.lib.sh ]; then
+  curl https://raw.githubusercontent.com/themattrix/bash-concurrent/master/concurrent.lib.sh > ~/.concurrent.lib.sh
+  echo '~/.concurrent.lib.sh downloaded!'
+fi
+. ~/.concurrent.lib.sh
+
 # Term colors
 if [ "$TERM" = "xterm" ]; then
   export TERM=xterm-256color
