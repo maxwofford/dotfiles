@@ -79,3 +79,9 @@ if [ ! -f ~/.z.sh ]; then
   echo '~/.z.sh downloaded!'
 fi
 . ~/.z.sh
+
+if [ ! -f ~/.concurrent.lib.sh ]; then
+  curl https://raw.githubusercontent.com/themattrix/bash-concurrent/master/concurrent.lib.sh > ~/.concurrent.lib.sh
+  echo '~/.concurrent.lib.sh downloaded!'
+fi
+. ~/.concurrent.lib.sh
