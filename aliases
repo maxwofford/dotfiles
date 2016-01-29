@@ -79,6 +79,7 @@ alias fontreload='fc-cache -f -v'
 alias record='asciinema rec'
 alias open='nautilus'
 alias send-sms='twilio-sms'
+alias copyclip='xclip -selection c'
 
 # remotes aliases
 alias meowth='mosh maxw@meowth.servers.hackedu.us'
