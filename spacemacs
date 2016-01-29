@@ -30,7 +30,6 @@ values."
      javascript
      markdown
      org
-     (python :variables python-enable-yapf-format-on-save t)
      ruby
      ruby-on-rails
      yaml
