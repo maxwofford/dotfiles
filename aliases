@@ -54,6 +54,7 @@ alias agi='sudo apt-get install'
 alias agr='sudo apt-get remove'
 alias agu='sudo apt-get update'
 alias aps='aptitude search'
+alias ni='npm install'
 
 # terminal aliases
 alias :q='exit'
