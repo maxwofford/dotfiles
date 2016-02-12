@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 filetype plugin indent on
 
 " Set line numbers on the left
