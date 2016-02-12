@@ -25,7 +25,6 @@ set hlsearch
 " set t_Co=256
 syntax enable
 set background=dark
-colorscheme solarized
 " let g:base16_shell_path="$HOME/.config/base16-shell"
 " let base16colorspace=256 " Access colors present in 256 colorspace. Must be before colorscheme declaration
 " colorscheme base16-default
