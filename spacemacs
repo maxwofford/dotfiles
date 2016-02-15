@@ -49,6 +49,7 @@ values."
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
+                                      rainbow-mode
                                       spray
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
