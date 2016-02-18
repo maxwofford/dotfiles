@@ -132,7 +132,7 @@ gclone() {
   git clone $1 && cd $(basename $1 | sed -e 's/\.git//')
 }
 
-image-shadow () {
+img-shadow () {
   out=${1%.*}-shadow.${1#*.}
   in=$1
   if [ ! -z $2 ] ; then
