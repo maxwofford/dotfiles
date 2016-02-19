@@ -36,6 +36,9 @@ values."
      ;; Other  layers
      auto-completion
      better-defaults
+     (colors :variables
+            colors-enable-nyan-cat-progress-bar t
+            colors-enable-rainbow-identifiers t)
      git
      github
      magit
