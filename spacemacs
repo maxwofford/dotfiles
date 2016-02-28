@@ -251,13 +251,13 @@ layers configuration. You are free to put any user code."
   ;; org-capture templates
   (setq org-capture-templates
         (quote (("t" "Todo" entry (file org-default-notes-file)
-                 "** TODO %?\n")
+                 "* TODO %?\n")
                 ("m" "Meeting" entry (file org-default-notes-file)
-                 "** MEET %?%t\n")
+                 "* MEET %?%t\n")
                 ("n" "Note" entry (file org-default-notes-file)
-                 "** %? :NOTE:\n")
+                 "* %? :NOTE:\n")
                 ("i" "Idea" entry (file org-default-notes-file)
-                 "** IDEA %?\n")
+                 "* IDEA %?\n")
                 )))
   ;; org-capture config
   (setq org-default-notes-file "~/documents/org/main.org")
