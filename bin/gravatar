@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Original script from
+# https://bitbucket.org/denilsonsa/small_scripts/src/3e5c336c2dd1a90a7e426c8e123e5a23622de4a5/gravatar.sh
+
+if [ "$1" = "-h" -o "$1" = "-help" -o "$1" = "--help" ] ; then
+  echo 'Usage: gravatar someone@example.com'
+  echo 'See also: http://en.gravatar.com/site/implement/images/'
+  exit 1
+fi
+
+MD5=`echo -n 'max@maxwofford.com' | md5sum | sed 's/ \+- *$//'`
+echo "https://www.gravatar.com/avatar/${MD5}.png?s=512"
