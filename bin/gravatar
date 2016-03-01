@@ -9,5 +9,5 @@ if [ "$1" = "-h" -o "$1" = "-help" -o "$1" = "--help" ] ; then
   exit 1
 fi
 
-MD5=`echo -n 'max@maxwofford.com' | md5sum | sed 's/ \+- *$//'`
+MD5=`echo -n "${1:-max@maxwofford.com}" | md5sum | sed 's/ \+- *$//'`
 echo "https://www.gravatar.com/avatar/${MD5}.png?s=512"
