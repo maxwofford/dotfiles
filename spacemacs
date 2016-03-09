@@ -26,6 +26,7 @@ values."
      ;; Syntax highlighting
      dockerfile
      emacs-lisp
+     go
      html
      javascript
      markdown
