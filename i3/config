@@ -111,6 +111,10 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +2% && pactl set-sink-
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -2% && pactl set-sink-mute 1 0
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle
 
+# Brightness
+bindsym XF86MonBrightnessDown exec xbacklight - 7
+bindsym XF86MonBrightnessUp exec xbacklight + 7
+
 # Startup exec
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
