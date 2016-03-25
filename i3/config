@@ -118,8 +118,6 @@ bindsym XF86MonBrightnessUp exec xbacklight + 7
 # Startup exec
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
-exec --no-startup-id gnome-sound-applet
-exec --no-startup-id unclutter
 exec --no-startup-id set-background
 exec --no-startup-id dropbox
 exec --no-startup-id redshift-gtk
