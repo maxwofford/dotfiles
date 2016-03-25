@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # color scheme
-client.focused   #64577b #5d4d7a #ffffff #2e9ef4 #285577
+client.focused   #64577b #5d4d7a #ffffff #624e83 #5d4d7a
 client.unfocused #64577b #222222 #888888 #292d2e #222222
 
 # font for window titles
@@ -167,4 +167,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3blocks
     font pango:Source Code Pro-10 11
+    colors {
+        focused_workspace #64577b #5d4d7a #ffffff
+    }
 }
