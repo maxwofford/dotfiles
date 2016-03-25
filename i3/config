@@ -4,6 +4,10 @@
 
 set $mod Mod4
 
+# color scheme
+client.focused   #64577b #5d4d7a #ffffff #2e9ef4 #285577
+client.unfocused #64577b #222222 #888888 #292d2e #222222
+
 # font for window titles
 font pango:monospace 8
 
