@@ -31,6 +31,7 @@ values."
      javascript
      markdown
      org
+     python
      ruby
      ruby-on-rails
      yaml
