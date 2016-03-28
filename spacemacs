@@ -230,13 +230,6 @@ layers configuration. You are free to put any user code."
    web-mode-css-indent-offset 2
    web-mode-markup-indent-offset 2
    )
-  ;; Keybindings to activley used files
-  (global-set-key (kbd "C-c e") ;; .spacemacs configuration file
-                  (lambda()
-                    (interactive)(find-file "~/.spacemacs")))
-  (global-set-key (kbd "C-c o") ;; main.org
-                  (lambda()
-                    (interactive)(find-file "~/documents/org/main.org")))
   ;; Org-mode configuration-----------------------------------------------------
   (setq org-agenda-files '("~/documents/org")
         org-startup-folded t)
@@ -250,6 +243,10 @@ layers configuration. You are free to put any user code."
               (local-set-key (kbd "C-c m") 'org-archive-subtree)))
   ;; org-capture-mode starts in evil-insert-state
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
+  ;; org-capture config
+  (setq org-directory "~/documents/org")
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (define-key global-map (kbd "C-c c") 'org-capture)
   ;; org-capture templates
   (setq org-capture-templates
         (quote (("t" "Todo" entry (file org-default-notes-file)
@@ -261,9 +258,13 @@ layers configuration. You are free to put any user code."
                 ("i" "Idea" entry (file org-default-notes-file)
                  "* IDEA %?\n")
                 )))
-  ;; org-capture config
-  (setq org-default-notes-file "~/documents/org/main.org")
-  (define-key global-map (kbd "C-c c") 'org-capture)
+  ;; Keybindings to activley used files
+  (global-set-key (kbd "C-c e") ;; .spacemacs configuration file
+                  (lambda()
+                    (interactive)(find-file "~/.spacemacs")))
+  (global-set-key (kbd "C-c o") ;; notes.org
+                  (lambda()
+                    (interactive)(find-file "~/documents/org/notes.org")))
   ;; associate shell-script-mode with .sh files
   (add-to-list 'auto-mode-alist '("\\.sh\\'" . shell-script-mode))
   ;; full document previews
