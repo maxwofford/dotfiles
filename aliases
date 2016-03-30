@@ -86,6 +86,7 @@ alias copyclip='xclip -selection c'
 alias meowth='mosh maxw@meowth.servers.hackedu.us'
 alias palm='mosh maxw@192.241.232.211'
 alias pi='mosh pi@mxw4185pi.student.rit.edu'
+alias csh='mosh maxw@shell.csh.rit.edu'
 
 # function aliases
 ## transfer service from https://github.com/dutchcoders/transfer.sh/
