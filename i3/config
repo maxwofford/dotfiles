@@ -115,6 +115,10 @@ bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle
 bindsym XF86MonBrightnessDown exec xbacklight - 7
 bindsym XF86MonBrightnessUp exec xbacklight + 7
 
+# Screenshots
+bindsym --release Shift+Print exec "scrot ~/Pictures/Screenshot-$(date +%Y-%m-%d%H:%M:%S).png -s"
+bindsym Print exec "scrot ~/Pictures/Screenshot-$(date +%Y-%m-%d%H:%M:%S).png"
+
 # Startup exec
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
