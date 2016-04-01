@@ -116,8 +116,8 @@ bindsym XF86MonBrightnessDown exec xbacklight - 7
 bindsym XF86MonBrightnessUp exec xbacklight + 7
 
 # Screenshots
-bindsym --release Shift+Print exec "scrot ~/Pictures/Screenshot-$(date +%Y-%m-%d%H:%M:%S).png -s"
-bindsym Print exec "scrot ~/Pictures/Screenshot-$(date +%Y-%m-%d%H:%M:%S).png"
+bindsym --release Shift+Print exec "scrot ~/Pictures/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png -s"
+bindsym Print exec "scrot ~/Pictures/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png"
 
 # Startup exec
 exec --no-startup-id gnome-settings-daemon
