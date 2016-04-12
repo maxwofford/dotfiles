@@ -156,6 +156,6 @@ gif-shadow () {
   echo "Converted file : $out"
 }
 
-background () {
+back () {
   $* &
 }
