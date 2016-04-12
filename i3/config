@@ -125,10 +125,10 @@ exec --no-startup-id nm-applet
 exec --no-startup-id set-background
 exec --no-startup-id dropbox start -i
 exec --no-startup-id redshift-gtk
+exec --no-startup-id emacs --daemon
 exec --no-startup-id i3-msg 'workspace 1; exec google-chrome'
 exec --no-startup-id i3-msg 'workspace 2; exec slack'
 exec --no-startup-id i3-msg 'workspace 9; exec spotify'
-exec --no-startup-id i3-msg 'workspace 10; exec emacs'
 
 # # Create Log out, Reboot, Poweroff bindings
 # mode "(R)estart, R(e)load, (L)ogout" {
