@@ -52,7 +52,7 @@ alias chrome='google-chrome'
 # pakage aliases
 alias agi='sudo apt-get install'
 alias agr='sudo apt-get remove'
-alias agu='sudo apt-get update'
+alias agu='sudo apt-get update | lolcat'
 alias aps='aptitude search'
 alias ni='npm install'
 
