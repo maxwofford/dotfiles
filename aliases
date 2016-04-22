@@ -70,6 +70,7 @@ alias pserv='python3 -m http.server'
 alias crone="$EDITOR ~/.dotfiles/crontab && crontab ~/.dotfiles/crontab"
 alias jserv='sudo browser-sync start --port $PORT --server --files "**"'
 alias hubot='bin/hubot'
+alias arduino='arduino </dev/null &>/dev/null &'
 
 # misc aliases
 alias installhistory='cat /var/log/dpkg.log | grep "\ install\ "'
