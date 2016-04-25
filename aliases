@@ -51,6 +51,7 @@ alias chrome='google-chrome'
 
 # pakage aliases
 alias agi='sudo apt-get install'
+alias agfi='sudo apt-get -f install'
 alias agr='sudo apt-get remove'
 alias agu='sudo apt-get update | lolcat'
 alias aps='aptitude search'
