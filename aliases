@@ -67,16 +67,13 @@ alias ip='wget -qO- icanhazip.com'
 # dev aliases
 alias prettyjson='python3 -m json.tool'
 alias pserv='python3 -m http.server'
-alias crone="$EDITOR ~/.dotfiles/crontab && crontab ~/.dotfiles/crontab"
-alias jserv='sudo browser-sync start --port $PORT --server --files "**"'
+alias crone='$EDITOR ~/.dotfiles/crontab && crontab ~/.dotfiles/crontab'
 alias hubot='bin/hubot'
 alias arduino='arduino </dev/null &>/dev/null &'
 
 # misc aliases
-alias installhistory='cat /var/log/dpkg.log | grep "\ install\ "'
 alias killport='fuser -k -n tcp '
 alias pin='ping 8.8.8.8'
-alias i3reload='i3-msg -t command restart'
 alias fontreload='fc-cache -f -v'
 alias record='asciinema rec'
 alias open='nautilus'
@@ -155,8 +152,4 @@ gif-shadow () {
           null: mpr:images -layers Composite \
           $out
   echo "Converted file : $out"
-}
-
-back () {
-  $* &
 }
