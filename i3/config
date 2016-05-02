@@ -125,6 +125,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id set-background
 exec --no-startup-id dropbox start -i
 exec --no-startup-id redshift-gtk
+exec --no-startup-id unclutter
 exec --no-startup-id emacs --daemon
 exec --no-startup-id i3-msg 'workspace 1; exec google-chrome'
 exec --no-startup-id i3-msg 'workspace 2; exec google-chrome https://starthackclub.slack.com/'
