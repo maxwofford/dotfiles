@@ -133,15 +133,18 @@ gclone() {
 }
 
 img-shadow () {
-  out=${1%.*}-shadow.${1#*.}
-  in=$1
-  if [ ! -z $2 ] ; then
-    convert $in -frame $2 $out
-    in=$out
-  fi
-  convert $in \( +clone -background black -shadow 80x8+0+0 \) \
-          +swap -background transparent -layers merge +repage $out
-  echo "Converted file : $out"
+  for file in "$@"
+  do
+    out=${1%.*}-shadow.${1#*.}
+    in=$1
+    if [ ! -z $2 ] ; then
+      convert $in -frame $2 $out
+      in=$out
+    fi
+    convert $in \( +clone -background black -shadow 80x8+0+0 \) \
+            +swap -background transparent -layers merge +repage $out
+    echo "Converted file : $out"
+  done
 }
 
 gif-shadow () {
