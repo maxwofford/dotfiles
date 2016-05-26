@@ -53,7 +53,7 @@ alias chrome='google-chrome'
 alias agi='sudo apt-get install'
 alias agfi='sudo apt-get -f install'
 alias agr='sudo apt-get remove'
-alias agu='sudo apt-get update | lolcat'
+alias agu='sudo apt-get update'
 alias aps='aptitude search'
 alias ni='npm install'
 
