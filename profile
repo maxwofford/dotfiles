@@ -38,7 +38,7 @@ PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # Source things #
 #################
 
-[[ -s $RVM ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 # Load NVM
 if [ -d $NVM_DIR ]; then
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
