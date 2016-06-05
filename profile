@@ -56,6 +56,8 @@ if tmux info &> /dev/null; then
   [[ -f ~/.tmux.conf ]] && tmux -q source-file ~/.tmux.conf
 fi
 
+[[ -f ~/.finrc ]] && . ~/.finrc
+
 ######################################
 # Shell specific configuration files #
 ######################################
