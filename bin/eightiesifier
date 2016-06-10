@@ -1,0 +1,115 @@
+#!/bin/bash
+
+#<======================>
+# Here there be dragons #
+#<======================>
+
+FILTERS=(desaturate
+         saturate
+         aberrate
+         vtear
+         # swirl
+         shiftNoise
+         channelBlur
+         # threshold
+         ampChannel
+        )
+
+PHRASES=('tubular'
+         'gnarly'
+         'radical'
+         'righteous'
+         'rad'
+         'schweet'
+         'illin'
+)
+
+desaturate () {
+  convert "$1" -modulate 100,50,100 -level 150 -sigmoidal-contrast 2x50%% "$1"
+}
+
+saturate () {
+  convert "$1" -modulate 100,150,100 -level 150 -sigmoidal-contrast 2x50%% "$1"
+}
+
+aberrate () {
+  width=$(convert "$1" -print "%w" /dev/null)
+  height=$(convert "$1" -print "%h" /dev/null)
+
+  # Channel shifts
+  rx=$(("$width / 70"))
+  ry=$(("$height / 250"))
+  bx=$(("$width / -100"))
+  by=$(("$height / -600"))
+  gx=$(("$width / $width"))
+  gy=$(("$height / $width"))
+  convert "$1" -virtual-pixel edge -channel R -fx "p[$rx,$ry]" -channel B -fx "p[$bx,$by]" -channel G -fx "p[$gx, $gy]" "$1"
+}
+
+vtear () {
+  width=$(convert "$1" -print "%w" /dev/null)
+  height=$(convert "$1" -print "%h" /dev/null)
+  # This doesn't work if the image is larger than 32767 pixels in height (http://www.tldp.org/LDP/abs/html/randomvar.html)
+  offset_width=$((RANDOM % (2 * width + 1) - width))
+  offset_height=$((RANDOM % 100))
+  convert "$1" -crop "100%x$offset_height%+0+0" "$1_offset.png"
+  convert "$1_offset.png" -roll "+$offset_width" "$1_offset.png"
+  shiftNoise "$1_offset.png"
+  composite "$1_offset.png" "$1" -compose over "$1"
+  rm "$1_offset.png"
+}
+
+paintingFilter () {
+  convert "$1" -mean-shift 15x15+10% "$1"
+}
+
+swirl () {
+  convert "$1" -swirl $((RANDOM % 200 - 100))% "$1"
+}
+
+shiftNoise () {
+  convert "$1" -fx "yy=(j+$((RANDOM % 100)))%2&1)?j+10:j; p{i,yy}" "$1"
+}
+
+channelBlur () {
+  convert "$1" -channel R -blur 4x8 "$1"
+}
+
+threshold () {
+  # $1: filename
+  # $2: channel
+  # $3: percent
+  # convert "$1" -channel "$2" -threshold "$3" "$1"
+  convert "$1" -channel R -threshold $((RANDOM % 100 + 1)) "$1"
+}
+
+ampChannel () {
+  convert "$1" -channel GB -fx 0 -alpha copy "$1_t.png"
+  convert "$1" -channel R -fx 0 -alpha copy "$1_o.png"
+  composite "$1_o.png" "$1_t.png" -compose subtract "1_t.png"
+  convert "$1_t.png" -channel R  -evaluate multiply 3 "$1_t.png"
+  swirl "$1_t.png" -40%
+  composite "$1_t.png" "$1" -compose lighten "$1"
+  rm "$1_o.png"
+  rm "$1_t.png"
+}
+
+for file in "$@"
+do
+  name=${file%.*}
+  type=.${file##*.}
+  tmpfile=$(mktemp -t "$name-XXX$type")
+  cp "$file" "$tmpfile"
+  for (( i=0 ; i<=$((RANDOM%12+1)); i++ ));
+  do
+    # Choose a random filter
+    filter=${FILTERS[$RANDOM % ${#FILTERS[@]}]}
+    $filter "$tmpfile"
+  done
+
+  cp "$tmpfile" "$name-converted$type"
+  rm "$tmpfile"
+
+  phrase=${PHRASES[$RANDOM % ${#PHRASES[@]}]}
+  echo "Just made $1 $phrase!"
+done
