@@ -33,30 +33,32 @@ saturate () {
 }
 
 aberrate () {
+  # This doesn't work if the image is larger than 32767 pixels in height (http://www.tldp.org/LDP/abs/html/randomvar.html)
   width=$(convert "$1" -print "%w" /dev/null)
   height=$(convert "$1" -print "%h" /dev/null)
 
   # Channel shifts
-  rx=$(("$width / 70"))
-  ry=$(("$height / 250"))
-  bx=$(("$width / -100"))
-  by=$(("$height / -600"))
-  gx=$(("$width / $width"))
-  gy=$(("$height / $width"))
+  rx=0 #$(("$width / 70"))
+  ry=$(($height / 250))
+  bx=$(($width / -100))
+  by=$(($height / -600))
+  gx=0 #$(("$width / $width"))
+  gy=0 #$(("$height / $width"))
   convert "$1" -virtual-pixel edge -channel R -fx "p[$rx,$ry]" -channel B -fx "p[$bx,$by]" -channel G -fx "p[$gx, $gy]" "$1"
 }
 
 vtear () {
+  # This doesn't work if the image is larger than 32767 pixels in height (http://www.tldp.org/LDP/abs/html/randomvar.html)
   width=$(convert "$1" -print "%w" /dev/null)
   height=$(convert "$1" -print "%h" /dev/null)
-  # This doesn't work if the image is larger than 32767 pixels in height (http://www.tldp.org/LDP/abs/html/randomvar.html)
+
   offset_width=$((RANDOM % (2 * width + 1) - width))
   offset_height=$((RANDOM % 100))
-  convert "$1" -crop "100%x$offset_height%+0+0" "$1_offset.png"
-  convert "$1_offset.png" -roll "+$offset_width" "$1_offset.png"
-  shiftNoise "$1_offset.png"
-  composite "$1_offset.png" "$1" -compose over "$1"
-  rm "$1_offset.png"
+  convert "$1" -crop "100%x$offset_height%+0+0" "$(1)_offset.png"
+  convert "$(1)_offset.png" -roll "+$offset_width" "$(1)_offset.png"
+  shiftNoise "$(1)_offset.png"
+  composite "$(1)_offset.png" "$1" -compose over "$1"
+  rm "$(1)_offset.png"
 }
 
 paintingFilter () {
@@ -84,14 +86,13 @@ threshold () {
 }
 
 ampChannel () {
-  convert "$1" -channel GB -fx 0 -alpha copy "$1_t.png"
-  convert "$1" -channel R -fx 0 -alpha copy "$1_o.png"
-  composite "$1_o.png" "$1_t.png" -compose subtract "1_t.png"
-  convert "$1_t.png" -channel R  -evaluate multiply 3 "$1_t.png"
-  swirl "$1_t.png" -40%
-  composite "$1_t.png" "$1" -compose lighten "$1"
-  rm "$1_o.png"
-  rm "$1_t.png"
+  convert "$1" -channel GB -fx 0 -alpha copy "$(1)_t.png"
+  convert "$1" -channel R -fx 0 -alpha copy "$(1)_o.png"
+  composite "$(1)_o.png" "$(1)_t.png" -compose subtract "$(1)_t.png"
+  convert "$(1)_t.png" -channel R  -evaluate multiply 3 "$(1)_t.png"
+  swirl "$(1)_t.png" -40%
+  composite "$(1)_t.png" "$1" -compose lighten "$1"
+  rm "$(1)_t.png" "$(1)_o.png"
 }
 
 for file in "$@"
@@ -100,7 +101,7 @@ do
   type=.${file##*.}
   tmpfile=$(mktemp -t "$name-XXX$type")
   cp "$file" "$tmpfile"
-  for (( i=0 ; i<=$((RANDOM%12+1)); i++ ));
+  for (( i=0 ; i<=$((RANDOM%6+1)); i++ ));
   do
     # Choose a random filter
     filter=${FILTERS[$RANDOM % ${#FILTERS[@]}]}
