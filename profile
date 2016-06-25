@@ -32,17 +32,18 @@ PATH="$HOME/.bin:$PATH"
 # Add heroku to path
 PATH="/usr/local/heroku/bin:$PATH"
 # Add RVM to path
-PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
 
 #################
 # Source things #
 #################
 
-[[ -s "$HOME/.rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 # Load NVM
 if [ -d $NVM_DIR ]; then
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
+# Load RVM
+[[ -s "$HOME/.rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 # Z.sh file searching
 if [ ! -f ~/.z.sh ]; then
   curl https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/.z.sh
