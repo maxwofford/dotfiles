@@ -157,3 +157,14 @@ gif-shadow () {
           $out
   echo "Converted file : $out"
 }
+
+rename () {
+  for FILE in *
+  do
+    if [ -f "$FILE" ];then
+      ID=`uuidgen`
+      EXTENSION=.${FILE##*.}
+      mv -v "$FILE" "$ID""$EXTENSION"
+    fi
+  done
+}
