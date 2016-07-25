@@ -129,7 +129,7 @@ exec --no-startup-id unclutter
 exec --no-startup-id emacs --daemon
 exec --no-startup-id i3-msg 'workspace 1; exec google-chrome'
 exec --no-startup-id i3-msg 'workspace 2; exec google-chrome https://starthackclub.slack.com/'
-exec --no-startup-id i3-msg 'workspace 9; exec spotify'
+exec --no-startup-id i3-msg 'workspace 9; exec spotify --minimized'
 
 # # Create Log out, Reboot, Poweroff bindings
 # mode "(R)estart, R(e)load, (L)ogout" {
