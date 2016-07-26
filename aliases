@@ -59,6 +59,7 @@ alias ni='npm install'
 
 # terminal aliases
 alias :q='exit'
+alias :e='e'
 
 # info aliases
 alias os='uname -srm'
