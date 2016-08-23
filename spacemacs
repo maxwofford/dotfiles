@@ -29,6 +29,7 @@ values."
      extra-langs
      go
      html
+     java
      javascript
      markdown
      org
