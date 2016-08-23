@@ -88,7 +88,7 @@ alias meowth='mosh maxw@meowth.servers.hackclub.com'
 alias palm='mosh maxw@192.241.232.211'
 alias pi='mosh pi@mxw4185pi.student.rit.edu'
 alias csh='mosh maxw@shell.csh.rit.edu'
-alias nitron='mosh maxw@nitron.se.rit.edu'
+alias nitron='ssh mxw4185@nitron.se.rit.edu'
 
 # function aliases
 ## transfer service from https://github.com/dutchcoders/transfer.sh/
