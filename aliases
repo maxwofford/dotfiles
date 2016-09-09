@@ -51,10 +51,11 @@ alias tmuxsource='tmux source-file ~/.tmux.conf'
 alias chrome='google-chrome'
 
 # pakage aliases
-alias agi='sudo apt-get install'
-alias agfi='sudo apt-get -f install'
-alias agr='sudo apt-get remove'
-alias agu='sudo apt-get update'
+alias agi='sudo apt install'
+alias agfi='sudo apt -f install'
+alias agar='sudo apt-get autoremove'
+alias agc='sudo apt-get clean'
+alias agu='sudo apt update'
 alias aps='aptitude search'
 alias ni='npm install'
 
