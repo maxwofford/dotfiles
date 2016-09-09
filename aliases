@@ -44,7 +44,8 @@ alias mkdir='mkdir -p'
 
 # tmux aliases
 alias tmux='tmux -2'
-alias tmuxa='tmux attach -dt'
+alias ta='tmux attach -dt'
+alias tl='tmux ls'
 alias tmuxsource='tmux source-file ~/.tmux.conf'
 
 # browser aliases
