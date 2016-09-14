@@ -18,3 +18,11 @@ set hlsearch
 
 syntax enable
 set background=dark
+
+" map CTRL-E to end-of-line
+
+map <C-e> <esc>$i<right>
+
+" map CRTL-A to start-of-line
+
+map <C-a> <esc>0
