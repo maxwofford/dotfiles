@@ -31,6 +31,10 @@ values."
      html
      java
      javascript
+     (latex :variables
+            latex-enable-auto-fill t
+            latex-enable-folding t
+            latex-build-command "LaTex")
      markdown
      org
      python
