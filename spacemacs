@@ -40,6 +40,7 @@ values."
      python
      ruby
      ruby-on-rails
+     swift
      yaml
      ;; Other  layers
      auto-completion
