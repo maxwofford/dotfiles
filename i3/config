@@ -17,9 +17,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start program launcher
-set $rofi_colors "-bg '#222222' -fg '#888888' -hlbg '#285577' -hlfg '#ffffff'"
-set $rofi_command "rofi -dmenu -show run $rofi_colors"
-bindsym $mod+d exec j4-dmenu-desktop --dmenu=$rofi_command
+bindsym $mod+d exec j4-dmenu-desktop --dmenu=myrofi
 
 # change focus
 bindsym $mod+h focus left
