@@ -1,28 +1,75 @@
-filetype plugin indent on
+" -*- mode: vimrc -*-
+"vim: ft=vim
 
-" Set line numbers on the left
-set relativenumber
-set number
+" dotspacevim/auto-install {{{
+" Automatic installation of spacevim.
 
-" Indentation is 2 spaces
-set expandtab
-set shiftwidth=2
-set softtabstop=2
+if empty(glob('~/.vim/autoload/spacevim.vim'))
+    silent !curl -sSfLo ~/.vim/autoload/spacevim.vim --create-dirs
+          \ https://raw.githubusercontent.com/ctjhoa/spacevim/master/autoload/spacevim.vim
+endif
 
-" Charecters over the 80 char ruler are highlighted red
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" }}}
 
-" Highlight search matches
-set hlsearch
+" dotspacevim/init {{{
+" This code is called at the very startup of Spacevim initialization
+" before layers configuration.
+" You should not put any user code in there besides modifying the variable
+" values."
+" IMPORTANT: For the moment, any changes in plugins or layers needs
+" a vim restart and :PlugInstall
 
-syntax enable
-set background=dark
+  let g:dotspacevim_distribution_mode = 1
 
-" map CTRL-E to end-of-line
+  let g:dotspacevim_configuration_layers = [
+  \  'core/.*',
+  \  'git',
+  \  'syntax-checking'
+  \]
 
-map <C-e> <esc>$i<right>
+  let g:dotspacevim_additional_plugins = [
+  \  'morhetz/gruvbox',
+  \  'altercation/vim-colors-solarized',
+  \  'jiangmiao/auto-pairs'
+  \]
 
-" map CRTL-A to start-of-line
+  let g:dotspacevim_excluded_plugins = []
 
-map <C-a> <esc>0
+" }}}
+
+" dotspacevim/user-init {{{
+" Initialization for user code.
+" It is compute immediately after `dotspacemacs/init', before layer
+" configuration executes.
+" This function is mostly useful for variables that need to be set
+" before plugins are loaded. If you are unsure, you should try in setting
+" them in `dotspacevim/user-config' first."
+
+  let mapleader = ' '
+  let g:leaderGuide_vertical = 1
+
+" }}}
+
+call spacevim#bootstrap()
+
+" dotspacevim/user-config {{{
+" Configuration for user code.
+" This is computed at the very end of Spacevim initialization after
+" layers configuration.
+" This is the place where most of your configurations should be done.
+" Unless it is explicitly specified that
+" a variable should be set before a plugin is loaded,
+" you should place your code here."
+
+  " Solarized Dark theme
+  set background=dark
+  colorscheme solarized
+
+  " Relative line numbers
+  set relativenumber
+  set number
+
+  " Indentation
+  set expandtab tabstop=2 shiftwidth=2
+
+" }}}
