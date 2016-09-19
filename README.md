@@ -1,6 +1,6 @@
 # Dotfiles
 
-This is my configuration repo. There are many like it, but this one is mine.
+This is my dotfiles repo. There are many like it, but this one is mine.
 
 I use [rcm](https://github.com/thoughtbot/rcm) to manage it. Feel free to fork
 or pull request!
