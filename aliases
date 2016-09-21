@@ -85,6 +85,7 @@ alias open='nautilus'
 alias send-sms='twilio-sms'
 alias copyclip='xclip -selection c'
 alias fixwifi='sudo systemctl restart network-manager'
+alias evilsay='espeak -v mb-en1 -p 30 -g 3'
 
 # remotes aliases
 alias meowth='mosh maxw@meowth.servers.hackclub.com'
