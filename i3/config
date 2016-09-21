@@ -116,6 +116,7 @@ bindsym Print exec "scrot ~/Pictures/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png"
 # Startup exec
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
+exec --no-startup-id compton -CGb
 exec --no-startup-id set-background
 exec --no-startup-id dropbox start -i
 exec --no-startup-id redshift-gtk
