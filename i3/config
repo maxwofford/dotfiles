@@ -123,9 +123,9 @@ exec --no-startup-id unclutter
 exec --no-startup-id emacs --daemon
 exec --no-startup-id watch -n 30 "thyme track -o ~/documents/thyme/$(date +%y-%m-%d)_$(hostname).json"
 exec --no-startup-id whatpulse
-exec --no-startup-id i3-msg 'workspace 1; exec google-chrome'
-exec --no-startup-id i3-msg 'workspace 2; exec google-chrome https://starthackclub.slack.com/'
-exec --no-startup-id i3-msg 'workspace 9; exec spotify --minimized'
+exec i3-msg 'workspace 1; exec google-chrome'
+exec i3-msg 'workspace 2; exec google-chrome https://starthackclub.slack.com/'
+exec i3-msg 'workspace 9; exec spotify --minimized'
 
 # # Create Log out, Reboot, Poweroff bindings
 # mode "(R)estart, R(e)load, (L)ogout" {
