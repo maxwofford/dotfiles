@@ -30,7 +30,8 @@ endif
   let g:dotspacevim_additional_plugins = [
   \  'morhetz/gruvbox',
   \  'altercation/vim-colors-solarized',
-  \  'jiangmiao/auto-pairs'
+  \  'jiangmiao/auto-pairs',
+  \  'luochen1990/rainbow'
   \]
 
   let g:dotspacevim_excluded_plugins = []
@@ -71,6 +72,9 @@ call spacevim#bootstrap()
 
   " Indentation
   set expandtab tabstop=2 shiftwidth=2
+
+  " Activate rainbow mode
+  let g:rainbow_active = 1
 
   " Keybindings
   :map <space> viw " Visual select word the cursor is currently over
