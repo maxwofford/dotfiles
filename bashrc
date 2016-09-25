@@ -25,6 +25,17 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
+# If set, a command name that is the name of a directory is executed as if it
+# were the argument to the cd command. This option is only used by interactive
+# shells.
+shopt -s autocd
+
+# If set, Bash lists the status of any stopped and running jobs before exiting
+# an interactive shell. If any jobs are running, this causes the exit to be
+# deferred until a second exit is attempted without an intervening command. The
+# shell always postpones exiting if any jobs are stopped.
+shopt -s checkjobs
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
