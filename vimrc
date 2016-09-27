@@ -73,7 +73,8 @@ call spacevim#bootstrap()
   set expandtab tabstop=2 shiftwidth=2
 
   " Keybindings
-  :map <space> viw " Visual select word the cursor is currently over
-  :map <C-a> ^     " Jump to beginning of line, skipping whitespace
+  :map <space> viw   " Visual select word the cursor is currently over
+  :map <C-a> ^       " Jump to beginning of line, skipping whitespace
+  :imap <C-BS> <C-W> " Control backspace deletes by word in insert mode
 
 " }}}
