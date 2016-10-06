@@ -30,7 +30,8 @@ endif
   let g:dotspacevim_additional_plugins = [
   \  'morhetz/gruvbox',
   \  'altercation/vim-colors-solarized',
-  \  'jiangmiao/auto-pairs'
+  \  'jiangmiao/auto-pairs',
+  \  'scrooloose/nerdtree'
   \]
 
   let g:dotspacevim_excluded_plugins = []
