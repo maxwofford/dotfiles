@@ -107,7 +107,7 @@ transfer() {
 }
 
 # Extract a file
-function extract() {
+extract() {
   if [ -f $1 ] ; then
     case $1 in
       *.7z)        7z x $1           ;;
@@ -131,7 +131,7 @@ function extract() {
   fi
 }
 
-function expose() {
+expose() {
   echo 'https://maxdev.localtunnel.me' | xclip -selection clipboard
   lt --subdomain maxdev --port $1
 }
@@ -140,7 +140,7 @@ gclone() {
   git clone $1 && cd $(basename $1 | sed -e 's/\.git//')
 }
 
-img-shadow () {
+img-shadow() {
   for file in "$@"
   do
     out=${1%.*}-shadow.${1#*.}
@@ -155,7 +155,7 @@ img-shadow () {
   done
 }
 
-gif-shadow () {
+gif-shadow() {
   out=${1%.*}-shadow.${1#*.}
   in=$1
   convert $in -coalesce -write mpr:images \
@@ -166,7 +166,7 @@ gif-shadow () {
   echo "Converted file : $out"
 }
 
-rename () {
+rename() {
   for FILE in *
   do
     if [ -f "$FILE" ];then
