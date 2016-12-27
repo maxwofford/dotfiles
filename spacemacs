@@ -24,6 +24,8 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; Syntax highlighting
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
      dockerfile
      emacs-lisp
      extra-langs
@@ -38,6 +40,7 @@ values."
      markdown
      org
      python
+     react
      ruby
      ruby-on-rails
      swift
