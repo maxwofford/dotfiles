@@ -26,12 +26,10 @@ values."
      ;; Syntax highlighting
      (c-c++ :variables
             c-c++-enable-clang-support t)
-     dockerfile
      emacs-lisp
      extra-langs
      go
      html
-     java
      javascript
      (latex :variables
             latex-enable-auto-fill t
@@ -53,7 +51,6 @@ values."
              colors-enable-rainbow-identifiers t)
      git
      github
-     magit
      shell
      spell-checking
      syntax-checking
