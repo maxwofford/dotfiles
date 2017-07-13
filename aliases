@@ -70,6 +70,10 @@ alias os='uname -srm'
 alias now='date'
 alias ip='wget -qO- icanhazip.com'
 
+# docker aliases
+alias dcu='docker-compose up'
+alias dcr='docker-compose run'
+
 # dev aliases
 alias prettyjson='python3 -m json.tool'
 alias pserv='python3 -m http.server'
