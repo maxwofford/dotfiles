@@ -28,9 +28,10 @@ endif
   \]
 
   let g:dotspacevim_additional_plugins = [
-  \  'morhetz/gruvbox',
   \  'altercation/vim-colors-solarized',
   \  'jiangmiao/auto-pairs',
+  \  'junegunn/goyo.vim',
+  \  'morhetz/gruvbox',
   \  'scrooloose/nerdtree'
   \]
 
