@@ -63,6 +63,7 @@ alias ni='npm install'
 
 # terminal aliases
 alias :q='exit'
+alias quit='exit'
 alias :e='e'
 
 # info aliases
