@@ -283,18 +283,17 @@ you should place you code here."
 
   ;; Set indentation to 2
   (setq
-   css-indent-offset 2
-   javascript-basic-offset 2
-   javascript-indent-level 2
-   js-basic-offset 2
+   standard-indent 2
+   tab-width 2
+   indent-tabs-mode nil
    js-indent-level 2
    js2-basic-offset 2
-   js2-indent-level 2
-   sh-basic-offset 2
-   sh-indentation 2
-   web-mode-code-indent-offet 2
-   web-mode-css-indent-offset 2
+   js2-strict-semi-warning nil
+   js2-missing-semi-one-line-override nil
    web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-indent-style 2
    )
 
   ;; Org-mode configuration-----------------------------------------------------
