@@ -121,6 +121,7 @@ exec --no-startup-id set-background
 exec --no-startup-id dropbox start -i
 exec --no-startup-id redshift-gtk
 exec --no-startup-id unclutter
+exec --no-startup-id rescuetime
 exec --no-startup-id emacs --daemon
 exec --no-startup-id watch -n 30 "thyme track -o ~/documents/thyme/$(date +%y-%m-%d)_$(hostname).json"
 exec --no-startup-id "sleep 60 && whatpulse"
