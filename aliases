@@ -62,6 +62,7 @@ alias aps='aptitude search'
 alias ni='npm install'
 
 # terminal aliases
+alias quit='exit'
 alias :q='exit'
 alias quit='exit'
 alias :e='e'
@@ -69,18 +70,25 @@ alias :e='e'
 # info aliases
 alias os='uname -srm'
 alias now='date'
-alias ip='wget -qO- icanhazip.com'
 
 # docker aliases
 alias dcu='docker-compose up'
 alias dcr='docker-compose run'
 
 # dev aliases
+alias history='cat ~/.bash_history | grep '
 alias prettyjson='python3 -m json.tool'
 alias pserv='python3 -m http.server'
 alias crone='$EDITOR ~/.dotfiles/crontab && crontab ~/.dotfiles/crontab'
 alias hubot='bin/hubot'
 alias arduino='arduino </dev/null &>/dev/null &'
+
+# docker aliases
+alias dc='docker-compose'
+alias dcr='docker-compose run'
+alias dcrs='docker-compose --service-ports run'
+alias dcb='docker-compose build'
+alias dcu='docker-compose up'
 
 # misc aliases
 alias killport='fuser -k -n tcp '
@@ -93,10 +101,12 @@ alias c='xclip -selection clipboard'
 alias v='xclip -selection c -o'
 alias fixwifi='sudo systemctl restart network-manager'
 alias evilsay='espeak -v mb-en1 -p 30 -g 3'
+alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 
 # remotes aliases
 alias meowth='mosh maxw@meowth.servers.hackclub.com'
-alias palm='mosh maxw@192.241.232.211'
+alias palm='mosh maxw@45.55.247.34'
+
 alias pi='mosh pi@mxw4185pi.student.rit.edu'
 alias csh='mosh maxw@shell.csh.rit.edu'
 alias nitron='ssh mxw4185@nitron.se.rit.edu'
@@ -172,7 +182,7 @@ gif-shadow() {
   echo "Converted file : $out"
 }
 
-rename() {
+rename-uid() {
   for FILE in *
   do
     if [ -f "$FILE" ];then
@@ -180,5 +190,31 @@ rename() {
       EXTENSION=.${FILE##*.}
       mv -v "$FILE" "$ID""$EXTENSION"
     fi
+  done
+}
+
+rename-md5() {
+  for FILE in *
+  do
+    if [ -f "$FILE" ];then
+      HASH=`md5sum $FILE | awk '{ print $1 }'`
+      mv -v "$FILE" "${HASH}"
+    fi
+  done
+}
+
+overlay-on-gif() {
+  convert $1 -coalesce null: $2 -layers composite -layers optimize "converted-${1}"
+}
+
+split-csv() {
+  tail -n +2 "$1" | split -l "$2" - split_
+
+  for file in split_*
+  do
+    mv $file "${file}.csv"
+    head -n 1 "$1" > tmp_file
+    cat "${file}.csv" >> tmp_file
+    mv -f tmp_file "${file}.csv"
   done
 }
