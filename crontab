@@ -1,17 +1,6 @@
 # Config =======================================================================
 
-PATH=/home/maxw/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-DOCUMENTS=/home/maxw/documents
-DROPBOX=/home/maxw/Dropbox
-
 # Jobs =========================================================================
-
-# Run batterynotifications task every 5 minutes
-*/5 * * * * batterynotifications
-
-# `cd` into the $DOCUMENTS folder every 5 minutes and auto commit anything that
-# hasn't been saved yet
-*/5 * * * * cd $DOCUMENTS && auto_commit
 
 # crontabs should end with an extra newline ====================================
 
