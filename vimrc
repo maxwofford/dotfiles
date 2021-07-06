@@ -1,82 +1,15 @@
-" -*- mode: vimrc -*-
-"vim: ft=vim
+" Relative line numbers
+set relativenumber
+set number
 
-" dotspacevim/auto-install {{{
-" Automatic installation of spacevim.
+" Show file stats
+set ruler
 
-if empty(glob('~/.vim/autoload/spacevim.vim'))
-    silent !curl -sSfLo ~/.vim/autoload/spacevim.vim --create-dirs
-          \ https://raw.githubusercontent.com/ctjhoa/spacevim/master/autoload/spacevim.vim
-endif
+" Blink cursor on error instead of beeping
+set visualbell
 
-" }}}
+" Encoding
+set encoding=utf-8
 
-" dotspacevim/init {{{
-" This code is called at the very startup of Spacevim initialization
-" before layers configuration.
-" You should not put any user code in there besides modifying the variable
-" values."
-" IMPORTANT: For the moment, any changes in plugins or layers needs
-" a vim restart and :PlugInstall
-
-  let g:dotspacevim_distribution_mode = 1
-
-  let g:dotspacevim_configuration_layers = [
-  \  'core/.*',
-  \  'git',
-  \  'syntax-checking'
-  \]
-
-  let g:dotspacevim_additional_plugins = [
-  \  'altercation/vim-colors-solarized',
-  \  'jiangmiao/auto-pairs',
-  \  'junegunn/goyo.vim',
-  \  'morhetz/gruvbox',
-  \  'scrooloose/nerdtree'
-  \]
-
-  let g:dotspacevim_excluded_plugins = []
-
-" }}}
-
-" dotspacevim/user-init {{{
-" Initialization for user code.
-" It is compute immediately after `dotspacemacs/init', before layer
-" configuration executes.
-" This function is mostly useful for variables that need to be set
-" before plugins are loaded. If you are unsure, you should try in setting
-" them in `dotspacevim/user-config' first."
-
-  let mapleader = ' '
-  let g:leaderGuide_vertical = 1
-
-" }}}
-
-call spacevim#bootstrap()
-
-" dotspacevim/user-config {{{
-" Configuration for user code.
-" This is computed at the very end of Spacevim initialization after
-" layers configuration.
-" This is the place where most of your configurations should be done.
-" Unless it is explicitly specified that
-" a variable should be set before a plugin is loaded,
-" you should place your code here."
-
-  " Solarized Dark theme
-  set background=dark
-  colorscheme solarized
-
-  " Relative line numbers
-  set relativenumber
-  set number
-
-  " Indentation
-  set expandtab tabstop=2 shiftwidth=2
-
-  " Keybindings
-  :map <space> viw   " Visual select word the cursor is currently over
-  :map <C-a> ^       " Jump to beginning of line, skipping whitespace
-  :imap <C-BS> <C-W> " Control backspace deletes by word in insert mode
-
-" }}}
+" Indentation
+set expandtab tabstop=2 shiftwidth=2
