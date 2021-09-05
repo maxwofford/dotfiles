@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./tailscale.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
