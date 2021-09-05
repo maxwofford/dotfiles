@@ -1,5 +1,0 @@
-#!/bin/sh
-
-for file in "$@"; do
-  cp -ri "${file}" "${file}.bak"
-done
