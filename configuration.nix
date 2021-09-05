@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, options, ... }:
 
 {
   imports =
@@ -95,6 +95,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.hostKeys = options.services.openssh.hostKeys.default;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
