@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, options, ... }:
+{ config, pkgs, options, callPackage, ... }:
 
 {
   imports =
@@ -46,10 +46,33 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
+
+  # Enable plasma desktop manager
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  networking.networkmanager.enable = true;
+
+  #services.xserver.windowManager.dwm.enable = true;
+
+  # i3 config
+  environment.pathsToLink = [ "/libexec" ];
+  services.xserver.windowManager.i3 = {
+    enable = true;
+    extraPackages = with pkgs; [
+      dmenu
+      rofi
+      i3status
+      i3lock
+      i3blocks
+    ];
+  };
+
+  # Use awesomeMW
   #services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
+  #services.xserver.windowManager.awesome.enable = true;
+
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -78,12 +101,19 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    unzip
+    tldr
+    kitty
+    st
+    dmenu
+    openssl
     git
     xclip
     wget
     firefox
     chromium
     alacritty
+    xfce.thunar xfce.xfconf xfce.tumbler xfce.exo
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
