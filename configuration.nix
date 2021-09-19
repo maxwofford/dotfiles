@@ -31,6 +31,8 @@
   networking.interfaces.enp5s0.useDHCP = true;
   networking.interfaces.wlp4s0.useDHCP = true;
 
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -94,7 +96,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.msw = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
@@ -129,6 +131,11 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.hostKeys = options.services.openssh.hostKeys.default;
+
+  services.aria2.enable = true;
+  services.aria2.rpcSecret = "aria2rpc";
+  services.aria2.extraArguments = "--rpc-listen-all";
+  services.aria2.openPorts = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
