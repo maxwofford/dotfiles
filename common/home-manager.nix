@@ -51,9 +51,6 @@ in
         quit = "exit";
         ":q" = "exit";
       };
-      initExtra = ''
-        echo "You find yourself wandering through a forest..."
-        '';
     };
 
     programs.git = {
