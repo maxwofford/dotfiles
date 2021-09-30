@@ -18,6 +18,7 @@ in
     };
 
     programs.git = {
+      enable = true;
       userName = "Max Wofford";
       userEmail = "max@maxwofford.com";
     };
