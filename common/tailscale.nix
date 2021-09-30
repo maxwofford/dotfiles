@@ -8,6 +8,7 @@
   ];
   networking.extraHosts =
     ''
+      100.115.193.119 forest
       100.103.124.128 water-lily
       100.64.232.97 angel-trumpet
       100.113.78.4 guava
