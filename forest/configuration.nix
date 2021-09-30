@@ -32,26 +32,16 @@
     enable = true;
 
     virtualHosts = {
-      "forest.maxwofford.com" = {
-        locations."/".return = "302 https://github.com/maxwofford/dotfiles";
-
-        locations."/status-badges/forest" = {
+      "$hostname.maxwofford.com" = {
+        locations."/status/forest" = {
           proxyPass = "http://forest/status-badge";
         };
 
-        locations."/status-badges/water-lily" = {
+        locations."/status/water-lily" = {
           proxyPass = "http://water-lily/status-badge";
         };
-      };
 
-      "$hostname" = {
-        locations."/status-badges/forest" = {
-          proxyPass = "http://forest/status-badge";
-        };
-
-        locations."/status-badges/water-lily" = {
-          proxyPass = "http://water-lily/status-badge";
-        };
+        # locations."/".return = "302 https://github.com/maxwofford/dotfiles";
       };
     };
   };
