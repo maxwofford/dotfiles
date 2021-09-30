@@ -19,6 +19,33 @@ in
         "autocd"
         "checkjobs"
       ];
+      shellAliases = {
+        ll = "ls -alF";
+        la = "ls -la";
+        l = "ls -CF";
+
+        mkdir = "mkdir -p";
+
+        "..." = "cd ../..";
+        "...." = "cd ../../..";
+        "....." = "cd ../../../..";
+        "......" = "cd ../../../../..";
+
+        g = "git";
+        gc = "git commit -m";
+        gco = "git checkout -b";
+        gd = "git diff";
+        gdc = "git diff --cached";
+        gs = "git status";
+        gr = "git remote -v";
+        gpull = "git pull --rebase";
+        gpush = "git push";
+        gb = "git branch -v";
+        ga = "git add";
+
+        quit = "exit";
+        ":q" = "exit";
+      };
       initExtra = ''
         echo "You find yourself wandering through a forest..."
         '';
