@@ -50,6 +50,10 @@ in
         gpush = "git push";
         gb = "git branch -v";
         ga = "git add";
+        gap = "git add -p";
+
+        nr = "sudo nixos-rebuild switch";
+        ne = "vim ~/.dotfiles";
 
         quit = "exit";
         ":q" = "exit";
