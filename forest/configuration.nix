@@ -32,7 +32,7 @@
     enable = true;
 
     virtualHosts = {
-      "$hostname.maxwofford.com" = {
+      "forest.maxwofford.com" = {
         locations."/status/forest" = {
           proxyPass = "http://forest/status-badge";
         };
