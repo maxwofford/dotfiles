@@ -12,6 +12,13 @@ in
     programs.bash = {
       enable = true;
       enableVteIntegration = true;
+      shellOptions = [
+        "checkwinsize"
+        "globstar"
+        "histappend"
+        "autocd"
+        "checkjobs"
+      ];
       initExtra = ''
         echo "You find yourself wandering through a forest..."
         '';
