@@ -7,9 +7,10 @@
     /home/msw/.dotfiles/common/tailscale.nix
 
     #<home-manager/nixos>
-    /home/msw/.dotfiles/common/home-manager.nix
 
     /home/msw/.dotfiles/common/msw_user.nix
+
+    /home/msw/.dotfiles/forest/home.nix
   ];
 
   boot.cleanTmpDir = true;
