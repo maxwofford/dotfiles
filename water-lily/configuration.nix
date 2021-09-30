@@ -8,9 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      /home/msw/.dotfiles/common/msw_user.nix
       /home/msw/.dotfiles/common/tailscale.nix
       /home/msw/.dotfiles/common/watermelon.nix
-      /home/msw/.dotfiles/home-manager.nix
+      /home/msw/.dotfiles/common/home-manager.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -76,7 +77,6 @@
   #services.xserver.displayManager.sddm.enable = true;
   #services.xserver.windowManager.awesome.enable = true;
 
-
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   
@@ -94,16 +94,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.msw = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    wget
     unzip
     tldr
     kitty
