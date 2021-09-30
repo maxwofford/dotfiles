@@ -8,8 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./tailscale.nix
-      ./watermelon.nix
+      /home/msw/.dotfiles/common/tailscale.nix
+      /home/msw/.dotfiles/common/watermelon.nix
+      /home/msw/.dotfiles/home-manager.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
