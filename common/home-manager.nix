@@ -24,6 +24,9 @@ in
         "autocd"
         "checkjobs"
       ];
+      sessionVariables = {
+        EDITOR = "vim";
+      };
       shellAliases = {
         ll = "ls -alF";
         la = "ls -la";
