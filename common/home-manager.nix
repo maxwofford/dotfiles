@@ -73,6 +73,12 @@ in
       ignores = [
         # not even once!
         ".env"
+        "*.log"
+        "*.sqlite"
+        "*.sql"
+        ".DS_Store"
+        # vim
+        "*.swp"
       ];
     };
 
