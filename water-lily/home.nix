@@ -9,5 +9,14 @@
         echo "Water lily"
       '';
     };
+
+    programs.rofi = {
+      enable = true;
+      extraConfig = {
+        modi = "drun,emoji,ssh";
+      };
+      theme = "sidebar";
+      #theme = "Adapta-Nokto";
+    };
   };
 }
