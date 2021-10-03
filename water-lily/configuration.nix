@@ -99,6 +99,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    mosh
     wget
     unzip
     tldr
