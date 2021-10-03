@@ -1,6 +1,6 @@
 {
   imports = [
-    /home/msw/.dotfiles/common/home-manager.nix
+    /home/msw/.dotfiles/common/home-manager
   ];
 
   home-manager.users.msw = {

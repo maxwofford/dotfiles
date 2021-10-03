@@ -1,6 +1,6 @@
 {
   imports = [
-    /home/msw/.dotfiles/common/home-manager.nix
+    /home/msw/.dotfiles/common/home-manager
   ];
 
   home-manager.users.msw = {
@@ -10,13 +10,8 @@
       '';
     };
 
-    programs.rofi = {
-      enable = true;
-      extraConfig = {
-        modi = "drun,emoji,ssh";
-      };
-      theme = "sidebar";
-      #theme = "Adapta-Nokto";
-    };
+    programs.rofi = { enable = true; };
+
+    programs.vscode = { enable = true; };
   };
 }
