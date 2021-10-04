@@ -12,6 +12,7 @@ in
       ./vim.nix
       ./rofi.nix
       ./vs-code.nix
+      ./vscode-server.nix
     ];
   };
 }
