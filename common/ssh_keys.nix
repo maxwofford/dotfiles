@@ -1,7 +1,8 @@
 {
-  forest = ''
-
-  '';
+  # Forest is connected to the internet on DO, so don't trust it for SSH by default
+  # forest = ''
+  #   ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/BUnY1AysGsBsjqQOyC4wKjlmar5yCLXy9pInYMtcc msw@forest
+  # '';
   water-lily = ''
     ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrhhYe/ARsSJ1X7dpQwQcWcaokODCkp6I8FBz9R+PBl msw@water-lily
   '';
