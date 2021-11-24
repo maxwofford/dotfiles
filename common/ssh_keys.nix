@@ -12,5 +12,8 @@
   rubber = ''
     ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII5bJhhyjxGBe/3cU7NzbLBuX6hFn+nkgx3HD/nNDf4B max@rubber
   '';
+  toadstool = ''
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO+DriCt/V6DG2Jm8pGs9muW20DmPJA1GIrYqvrrgXN3 msw@toadstool_2021-11-24
+  '';
   
 }
