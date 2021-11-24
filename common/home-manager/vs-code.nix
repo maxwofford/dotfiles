@@ -1,8 +1,13 @@
 { pkgs, ... }: {
+  nixpkgs.config.allowUnfree = true;
   programs.vscode = {
-    # enable = true;
-    package = pkgs.vscodium;
+    # This is enabled on a per-host basis
+    # enable = true; # Did you read the comment?
+    package = pkgs.vscode;
     extensions = with pkgs.vscode-extensions; [
+      davidanson.vscode-markdownlint
+      bbenoist.Nix
+      eamodio.gitlens
       vscodevim.vim
     ];
   };
