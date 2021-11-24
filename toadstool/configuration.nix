@@ -24,7 +24,8 @@
 
   # Framework laptop
   boot.kernelPackages = pkgs.linuxPackages_latest; # for WiFi support
-  services.fprintd.enable = true; # for fingerprint support
+
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
 
   networking.hostName = "toadstool"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
