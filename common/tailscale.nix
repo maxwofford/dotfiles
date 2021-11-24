@@ -16,5 +16,6 @@
       100.96.50.76 watermelon
       100.76.38.42 rubber
       100.64.63.40 toadstool
+      100.118.73.5 sugarcane
     '';
 }
