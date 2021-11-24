@@ -36,7 +36,9 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp0s13f0u1u3.useDHCP = true;
+  # networking.interfaces.enp0s13f0u1u3.useDHCP = true;
+  # ^ See https://github.com/NixOS/nixpkgs/issues/107908#issuecomment-882549381
+  networking.networkmanager.enable = true;
 
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
