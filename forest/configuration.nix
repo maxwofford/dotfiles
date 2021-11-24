@@ -39,6 +39,10 @@
           proxyPass = "http://water-lily/status-badge";
         };
 
+        locations."/status/toadstool" = {
+          proxyPass = "http://toadstool/status-badge";
+        };
+
         locations."/".return = "302 https://github.com/maxwofford/dotfiles";
       };
     };

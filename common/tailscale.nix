@@ -15,5 +15,6 @@
       100.81.20.86 sequoia
       100.96.50.76 watermelon
       100.76.38.42 rubber
+      100.64.63.40 toadstool
     '';
 }

@@ -8,6 +8,10 @@ _Status badges run through forest, so all badges showing red probably means fore
 
 Forest is a cheap digital-ocean droplet that connects my computers to the outside world. Converted from ubuntu to nixos with [nix-infect](https://github.com/elitak/nixos-infect/blob/master/nixos-infect).
 
+### toadstool <img src="https://img.shields.io/website?label=toadstool&up_color=green&up_message=online&url=https%3A%2F%2Fforest.maxwofford.com%2Fstatus%2Ftoadstool">
+
+A framework laptop running nixos.
+
 ### water-lily <img src="https://img.shields.io/website?label=water-lily&up_color=green&up_message=online&url=https%3A%2F%2Fforest.maxwofford.com%2Fstatus%2Fwater-lily">
 
 Water-lily is a partition of Sequoia running nixos- it's where I do most development & experiment with nixos the most.
