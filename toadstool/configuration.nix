@@ -23,6 +23,7 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
+  # Enable avahi (bonjour) for finding watermelon.local
   services.avahi = {
     enable = true;
     nssmdns = true;
@@ -32,13 +33,13 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Framework laptop
+  # Framework laptop recommended settings
   boot.kernelPackages = pkgs.linuxPackages_latest; # for WiFi support
-
   boot.kernelParams = [ "mem_sleep_default=deep" ];
+  # networking.wireless.enable = true;  # conflicts with  networkmanager
+  networking.networkmanager.enable = true;
 
   networking.hostName = "toadstool"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -49,7 +50,6 @@ in {
   networking.useDHCP = false;
   # networking.interfaces.enp0s13f0u1u3.useDHCP = true;
   # ^ See https://github.com/NixOS/nixpkgs/issues/107908#issuecomment-882549381
-  networking.networkmanager.enable = true;
 
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
@@ -66,7 +66,6 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
