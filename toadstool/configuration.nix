@@ -3,20 +3,24 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
+let
+  unstable = import (builtins.fetchTarball
+    "https://github.com/nixos/nixpkgs/tarball/nixos-unstable")
+  # reuse the current configuration
+    { config = config.nixpkgs.config; };
+in {
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    /home/msw/.dotfiles/toadstool/home.nix
 
-      /home/msw/.dotfiles/toadstool/home.nix
+    /home/msw/.dotfiles/common/msw_user.nix
+    /home/msw/.dotfiles/common/tailscale.nix
+    /home/msw/.dotfiles/common/aria2daemon.nix
+    /home/msw/.dotfiles/common/watermelon.nix
+    /home/msw/.dotfiles/common/status_badge.nix
+  ];
 
-      /home/msw/.dotfiles/common/msw_user.nix
-      /home/msw/.dotfiles/common/tailscale.nix
-      /home/msw/.dotfiles/common/aria2daemon.nix
-      /home/msw/.dotfiles/common/watermelon.nix
-      /home/msw/.dotfiles/common/status_badge.nix
-    ];
   nixpkgs.config.allowUnfree = true;
 
   services.avahi = {
@@ -95,17 +99,47 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     _1password
-     _1password-gui
-     htop
-     wget
-     git
-     mosh
-     tldr
-     firefox
-   ];
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    htop
+    wget
+    git
+    mosh
+    tldr
+    dconf2nix
+    yarn
+    nixfmt
+    unzip
+    heroku
+    docker-compose
+    vlc
+
+    firefox
+    google-chrome
+
+    cozy
+    blender
+    spotify
+    prusa-slicer
+
+    slack
+    discord
+
+    unstable.github-desktop
+
+    #gnomeExtensions.appindicator
+    gnomeExtensions.arcmenu
+    gnomeExtensions.blur-me
+    gnomeExtensions.hot-edge
+    gnomeExtensions.jiggle
+    gnomeExtensions.printers
+    gnomeExtensions.unite
+  ];
+  #services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "msw" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
