@@ -13,6 +13,7 @@
 
       /home/msw/.dotfiles/common/msw_user.nix
       /home/msw/.dotfiles/common/tailscale.nix
+      /home/msw/.dotfiles/common/aria2daemon.nix
       /home/msw/.dotfiles/common/watermelon.nix
       /home/msw/.dotfiles/common/status_badge.nix
     ];
