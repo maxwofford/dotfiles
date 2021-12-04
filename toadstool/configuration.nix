@@ -13,6 +13,8 @@ in {
     ./hardware-configuration.nix
 
     /home/msw/.dotfiles/toadstool/home.nix
+    # /home/msw/.dotfiles/toadstool/gnome.nix
+    /home/msw/.dotfiles/toadstool/plasma.nix
 
     /home/msw/.dotfiles/common/msw_user.nix
     /home/msw/.dotfiles/common/tailscale.nix
@@ -75,12 +77,10 @@ in {
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Enable plasma desktop manager
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -94,13 +94,12 @@ in {
   # hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
+  services.xserver.libinput.touchpad.naturalScrolling = false;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-   users.users.msw = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-   };
+  # Docker
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = [ "msw" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -109,42 +108,47 @@ in {
     htop
     wget
     git
+    gh
     mosh
     tldr
     dconf2nix
     yarn
+    nodePackages.npm
     nixfmt
     unzip
     heroku
     docker-compose
     vlc
+    bundler
+    ruby
+
+    virt-manager
+    qemu_xen-light
+    xen-light
 
     firefox
     google-chrome
 
-    cozy
-    blender
     spotify
+
+    krita
+    blender
     prusa-slicer
 
     slack
     discord
 
     unstable.github-desktop
-
-    #gnomeExtensions.appindicator
-    gnomeExtensions.arcmenu
-    gnomeExtensions.blur-me
-    gnomeExtensions.hot-edge
-    gnomeExtensions.jiggle
-    gnomeExtensions.printers
-    gnomeExtensions.unite
   ];
-  #services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "msw" ];
+  # programs.dconf.enable = true;
+  # virtualisation.libvirtd.enable = true;
+  # users.extraGroups.libvirtd.members = [ "msw" ];
+  # boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
+
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  # users.extraGroups.vboxusers.members = [ "msw" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

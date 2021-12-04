@@ -1,7 +1,5 @@
 {
-  imports = [
-    /home/msw/.dotfiles/common/home-manager
-  ];
+  imports = [ /home/msw/.dotfiles/common/home-manager ];
 
   home-manager.users.msw = {
     programs.bash = {
