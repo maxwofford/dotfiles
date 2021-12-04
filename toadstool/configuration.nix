@@ -39,6 +39,12 @@ in {
   # networking.wireless.enable = true;  # conflicts with  networkmanager
   networking.networkmanager.enable = true;
 
+  # CPU throttling
+  services.tlp.enable = true;
+  services.power-profiles-daemon.enable = false;
+  # Battery power management
+  services.upower.enable = true;
+
   networking.hostName = "toadstool"; # Define your hostname.
 
   # Set your time zone.
