@@ -4,7 +4,6 @@ let
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/tarball/21.11") {
       config.allowUnfree = true;
     };
-  inherit (vscode-utils) buildVscodeMarketplaceExtension;
 in {
   nixpkgs.config.allowUnfree = true;
 
