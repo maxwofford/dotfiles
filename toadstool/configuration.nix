@@ -128,6 +128,7 @@ in {
 
     firefox
     google-chrome
+    # brave # managed by home-manager
 
     spotify
 

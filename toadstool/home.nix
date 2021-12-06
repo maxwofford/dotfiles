@@ -8,6 +8,7 @@
       '';
     };
 
+    programs.brave.enable = true;
     programs.vscode.enable = true;
     services.vscode-server.enable = true;
   };
