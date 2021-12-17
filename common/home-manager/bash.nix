@@ -42,6 +42,9 @@
 
       quit = "exit";
       ":q" = "exit";
+
+      yt-dl = "yt-dlp --concurrent-fragments 10";
+      yt-mp3 = "yt-dl -x --audio-format mp3";
     };
   };
 }

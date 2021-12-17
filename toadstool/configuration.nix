@@ -121,6 +121,7 @@ in {
     vlc
     bundler
     ruby
+    yt-dlp
 
     virt-manager
     qemu_xen-light
