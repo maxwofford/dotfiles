@@ -21,6 +21,7 @@ in {
     /home/msw/.dotfiles/common/tailscale.nix
     /home/msw/.dotfiles/common/status_badge.nix
     /home/msw/.dotfiles/common/msw_user.nix
+    /home/msw/.dotfiles/common/tumblr-dl
   ];
 
   boot.cleanTmpDir = true;
@@ -35,6 +36,8 @@ in {
     vim
     wget
     tldr
+    bundler
+    bundix
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
