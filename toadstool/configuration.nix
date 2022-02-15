@@ -107,6 +107,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    zoom-us
     htop
     wget
     git
@@ -114,6 +115,7 @@
     mosh
     tldr
     dconf2nix
+    nodejs
     yarn
     nodePackages.npm
     nixfmt
@@ -124,6 +126,10 @@
     bundler
     ruby
     yt-dlp
+    terminator
+    tilda
+
+    postman
 
     virt-manager
     qemu_xen-light
@@ -142,7 +148,7 @@
     slack
     discord
 
-    unstable.github-desktop
+    #unstable.github-desktop
   ];
 
   # programs.dconf.enable = true;
