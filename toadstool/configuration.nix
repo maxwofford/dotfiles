@@ -3,18 +3,20 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-let
-  unstable = import (builtins.fetchTarball
-    "https://github.com/nixos/nixpkgs/tarball/nixos-unstable")
-  # reuse the current configuration
-    { config = config.nixpkgs.config; };
-in {
+#let
+#  unstable = import (builtins.fetchTarball
+#    "https://github.com/nixos/nixpkgs/tarball/nixos-unstable")
+#  # reuse the current configuration
+#    { config = config.nixpkgs.config; };
+#in {
+{
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
     /home/msw/.dotfiles/toadstool/home.nix
     # /home/msw/.dotfiles/toadstool/gnome.nix
     /home/msw/.dotfiles/toadstool/plasma.nix
+    /home/msw/.dotfiles/toadstool/steam.nix
 
     /home/msw/.dotfiles/common/msw_user.nix
     /home/msw/.dotfiles/common/tailscale.nix
