@@ -106,6 +106,7 @@
     qemu_xen-light
     xen-light
 
+    geckodriver
     firefox
     google-chrome
     # brave # managed by home-manager
