@@ -39,6 +39,7 @@
 
       nr = "sudo nixos-rebuild switch";
       ne = "vim ~/.dotfiles";
+      vsne = "code ~/.dotfiles";
 
       quit = "exit";
       ":q" = "exit";
