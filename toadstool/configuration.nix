@@ -17,6 +17,7 @@
     # /home/msw/.dotfiles/toadstool/gnome.nix
     /home/msw/.dotfiles/toadstool/plasma.nix
     /home/msw/.dotfiles/toadstool/steam.nix
+    /home/msw/.dotfiles/toadstool/nfs-share.nix
 
     /home/msw/.dotfiles/common/msw_user.nix
     /home/msw/.dotfiles/common/tailscale.nix
