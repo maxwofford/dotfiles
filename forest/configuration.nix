@@ -36,6 +36,7 @@ in {
     vim
     wget
     tldr
+    nixfmt
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
