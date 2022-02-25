@@ -17,11 +17,11 @@ in {
     /home/msw/.dotfiles/forest/hardware-configuration.nix
     /home/msw/.dotfiles/forest/networking.nix # generated at runtime by nixos-infect
     /home/msw/.dotfiles/forest/home.nix
-    /home/msw/.dotfiles/forest/cron.nix
 
     /home/msw/.dotfiles/common/tailscale.nix
     /home/msw/.dotfiles/common/status_badge.nix
     /home/msw/.dotfiles/common/msw_user.nix
+    /home/msw/.dotfiles/common/cron.nix
   ];
 
   boot.cleanTmpDir = true;
