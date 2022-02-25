@@ -1,10 +1,10 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   services.nfs.server = {
     enable = true;
+    # Tailscale IP for rubber, will open to more IPs in the future
     exports = ''
-    / 100.76.38.42(all_squash,insecure,rw,sync,no_subtree_check,crossmnt,fsid=0)
-    /home/msw 100.76.38.42(all_squash,anonuid=0,anongid=0,nohide,insecure,rw,sync,no_subtree_check)
+      / 100.76.38.42(all_squash,insecure,rw,sync,no_subtree_check,crossmnt,fsid=0)
+      /home/msw 100.76.38.42(all_squash,anonuid=0,anongid=0,nohide,insecure,rw,sync,no_subtree_check)
     '';
     # fixed rpc.statd port for firewall
     lockdPort = 4001;

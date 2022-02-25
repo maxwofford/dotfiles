@@ -1,22 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-#let
-#  unstable = import (builtins.fetchTarball
-#    "https://github.com/nixos/nixpkgs/tarball/nixos-unstable")
-#  # reuse the current configuration
-#    { config = config.nixpkgs.config; };
-#in {
-{
+{ config, pkgs, lib, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
     /home/msw/.dotfiles/toadstool/home.nix
     # /home/msw/.dotfiles/toadstool/gnome.nix
     /home/msw/.dotfiles/toadstool/plasma.nix
-    /home/msw/.dotfiles/toadstool/steam.nix
+    # /home/msw/.dotfiles/toadstool/steam.nix
     /home/msw/.dotfiles/toadstool/nfs-share.nix
 
     /home/msw/.dotfiles/common/msw_user.nix
@@ -26,7 +15,10 @@
     /home/msw/.dotfiles/common/status_badge.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  networking.hostName = "toadstool";
+  time.timeZone = "America/New_York";
+  networking.firewall.allowPing = true;
+  services.openssh.enable = true;
 
   # Enable avahi (bonjour) for finding watermelon.local
   services.avahi = {
@@ -50,11 +42,6 @@
   # Battery power management
   services.upower.enable = true;
 
-  networking.hostName = "toadstool"; # Define your hostname.
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
@@ -72,11 +59,10 @@
   services.xserver.libinput.touchpad.naturalScrolling = false;
 
   # Docker
-  virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "msw" ];
+  # virtualisation.docker.enable = true;
+  # users.extraGroups.docker.members = [ "msw" ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     zoom-us
@@ -120,8 +106,6 @@
 
     slack
     discord
-
-    #unstable.github-desktop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -131,11 +115,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
