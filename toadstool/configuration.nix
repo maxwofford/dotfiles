@@ -14,6 +14,8 @@
     /home/msw/.dotfiles/common/watermelon.nix
     /home/msw/.dotfiles/common/status_badge.nix
     /home/msw/.dotfiles/common/cron.nix
+
+    /home/msw/.dotfiles/fern/home-assistant.nix
   ];
 
   networking.hostName = "toadstool";
@@ -90,9 +92,9 @@
 
     postman
 
-    virt-manager
-    qemu_xen-light
-    xen-light
+    # virt-manager
+    # qemu_xen-light
+    # xen-light
 
     geckodriver
     firefox

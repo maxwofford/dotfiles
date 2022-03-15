@@ -27,3 +27,7 @@ The M1 macbook air I switched to after using guava. My main computer while on th
 ### watermelon
 
 A synology NAS currently configured with 8TB of RAID storage (~16TB of drives)-- it can hold a lot.
+
+### fern
+
+A 2012 mac mini bought for Hack Club that used to run our mail label ordering system. It's now running home assistant for the office.
