@@ -15,7 +15,7 @@
     /home/msw/.dotfiles/common/status_badge.nix
     /home/msw/.dotfiles/common/cron.nix
 
-    /home/msw/.dotfiles/fern/home-assistant.nix
+    # /home/msw/.dotfiles/fern/home-assistant.nix
   ];
 
   networking.hostName = "toadstool";
