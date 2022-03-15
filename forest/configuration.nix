@@ -28,6 +28,11 @@ in {
   networking.hostName = "forest";
   networking.firewall.allowPing = true;
   services.openssh.enable = true;
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+    channel = https://nixos.org/channels/nixos-21.11;
+  };
 
   environment.systemPackages = with pkgs; [
     gtop
