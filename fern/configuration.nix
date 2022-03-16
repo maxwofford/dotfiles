@@ -15,6 +15,12 @@
   time.timeZone = "America/New_York";
   networking.firewall.allowPing = true;
   services.openssh.enable = true;
+  
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+    channel = https://nixos.org/channels/nixos-21.11;
+  };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
