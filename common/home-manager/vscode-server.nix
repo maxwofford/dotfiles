@@ -3,7 +3,7 @@
   imports = [
     "${
       fetchTarball
-      "https://github.com/msteen/nixos-vscode-server/tarball/bc28cc2a7d866b32a8358c6ad61bea68a618a3f5"
+      "https://github.com/msteen/nixos-vscode-server/tarball/178c809a9dbd3f4df25ed7fbe23a52c35233502d"
     }/modules/vscode-server/home.nix"
   ];
 }
