@@ -24,6 +24,7 @@
   time.timeZone = "America/New_York";
   networking.firewall.allowPing = true;
   services.openssh.enable = true;
+  nix.autoOptimiseStore = true;
 
   # Enable avahi (bonjour) for finding watermelon.local
   services.avahi = {
