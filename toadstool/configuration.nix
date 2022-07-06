@@ -15,6 +15,7 @@
     /home/msw/.dotfiles/common/watermelon.nix
     /home/msw/.dotfiles/common/status_badge.nix
     /home/msw/.dotfiles/common/cron.nix
+    /home/msw/.dotfiles/common/fail2ban.nix
 
     # /home/msw/.dotfiles/fern/home-assistant.nix
   ];

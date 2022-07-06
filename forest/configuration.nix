@@ -22,6 +22,7 @@ in {
     /home/msw/.dotfiles/common/status_badge.nix
     /home/msw/.dotfiles/common/msw_user.nix
     /home/msw/.dotfiles/common/cron.nix
+    /home/msw/.dotfiles/common/fail2ban.nix
   ];
 
   boot.cleanTmpDir = true;
