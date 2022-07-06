@@ -35,6 +35,19 @@ in {
     channel = https://nixos.org/channels/nixos-21.11;
   };
 
+  # GC, optimize, free up space from nix store
+  nix.autoOptimiseStore = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  # free up to 1GiB whenever there is less than 100MiB left:
+  nix.extraOptions = ''
+    min-free = ${toString (100 * 1024 * 1024)}
+    max-free = ${toString (1024 * 1024 * 1024)}
+  '';
+
   environment.systemPackages = with pkgs; [
     gtop
     git
