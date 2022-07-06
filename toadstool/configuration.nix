@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
 
     /home/msw/.dotfiles/toadstool/home.nix
+    /home/msw/.dotfiles/toadstool/fall.nix
     # /home/msw/.dotfiles/toadstool/gnome.nix
     /home/msw/.dotfiles/toadstool/plasma.nix
     # /home/msw/.dotfiles/toadstool/steam.nix
