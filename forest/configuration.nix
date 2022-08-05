@@ -18,11 +18,13 @@ in {
     /home/msw/.dotfiles/forest/networking.nix # generated at runtime by nixos-infect
     /home/msw/.dotfiles/forest/home.nix
 
+    # /home/msw/.dotfiles/common/aria2daemon.nix
     /home/msw/.dotfiles/common/tailscale.nix
     /home/msw/.dotfiles/common/status_badge.nix
     /home/msw/.dotfiles/common/msw_user.nix
     /home/msw/.dotfiles/common/cron.nix
     /home/msw/.dotfiles/common/fail2ban.nix
+    /home/msw/.dotfiles/common/server_daemon.nix
   ];
 
   boot.cleanTmpDir = true;
@@ -83,6 +85,20 @@ in {
           extraConfig = ''
             sub_filter_types *;
             sub_filter __store__ ${authorizedKeys};
+          '';
+        };
+
+        locations."/upload" = {
+          proxyPass = "http://127.0.0.1:3000";
+          extraConfig = ''
+            client_max_body_size 100M;
+          '';
+        };
+
+        locations."/storage" = {
+          proxyPass = "http://127.0.0.1:3000";
+          extraConfig = ''
+            client_max_body_size 100M;
           '';
         };
 
