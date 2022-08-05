@@ -95,10 +95,11 @@ in {
           '';
         };
 
-        locations."/storage" = {
+        locations."/storage/" = {
           proxyPass = "http://127.0.0.1:3000";
           extraConfig = ''
-            client_max_body_size 100M;
+            proxy_hide_header 'Cache-Control';
+            add_header 'Cache-Control' "public, max-age=259200";
           '';
         };
 
