@@ -24,7 +24,7 @@ in {
     /home/msw/.dotfiles/common/msw_user.nix
     /home/msw/.dotfiles/common/cron.nix
     /home/msw/.dotfiles/common/fail2ban.nix
-    /home/msw/.dotfiles/common/server_daemon.nix
+    # /home/msw/.dotfiles/common/server_daemon.nix
   ];
 
   boot.cleanTmpDir = true;
@@ -58,7 +58,10 @@ in {
     wget
     tldr
     nixfmt
+
+    google-chrome
   ];
+  nixpkgs.config.allowUnfree = true;
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
@@ -88,20 +91,27 @@ in {
           '';
         };
 
-        locations."/upload" = {
-          proxyPass = "http://127.0.0.1:3000";
-          extraConfig = ''
-            client_max_body_size 100M;
-          '';
-        };
+        # locations."/upload" = {
+        #   proxyPass = "http://127.0.0.1:3000";
+        #   extraConfig = ''
+        #     client_max_body_size 100M;
+        #   '';
+        # };
 
-        locations."/storage/" = {
-          proxyPass = "http://127.0.0.1:3000";
-          extraConfig = ''
-            proxy_hide_header 'Cache-Control';
-            add_header 'Cache-Control' "public, max-age=259200";
-          '';
-        };
+        # locations."/screenshot" = {
+        #   proxyPass = "http://127.0.0.1:3000";
+        #   extraConfig = ''
+        #     client_max_body_size 100M;
+        #   '';
+        # };
+
+        # locations."/storage/" = {
+        #   proxyPass = "http://127.0.0.1:3000";
+        #   extraConfig = ''
+        #     proxy_hide_header 'Cache-Control';
+        #     add_header 'Cache-Control' "public, max-age=259200";
+        #   '';
+        # };
 
         locations."/".return = "302 https://github.com/maxwofford/dotfiles/tree/nixos";
       };
