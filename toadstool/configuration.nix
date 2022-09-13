@@ -24,7 +24,19 @@
   time.timeZone = "America/New_York";
   networking.firewall.allowPing = true;
   services.openssh.enable = true;
+
+  # GC, optimize, free up space from nix store
   nix.autoOptimiseStore = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  # free up to 1GiB whenever there is less than 100MiB left:
+  nix.extraOptions = ''
+    min-free = ${toString (100 * 1024 * 1024)}
+    max-free = ${toString (1024 * 1024 * 1024)}
+  '';
 
   # Enable avahi (bonjour) for finding watermelon.local
   services.avahi = {
