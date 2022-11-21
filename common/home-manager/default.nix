@@ -9,6 +9,7 @@ in {
     imports = [
       ./bash.nix
       ./brave.nix
+      ./dig.nix
       ./git.nix
       ./vim.nix
       ./rofi.nix

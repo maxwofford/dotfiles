@@ -106,6 +106,7 @@
     yt-dlp
     terminator
     tilda
+    dig
 
     postman
 

@@ -58,6 +58,7 @@ in {
     wget
     tldr
     nixfmt
+    dig
 
     google-chrome
   ];
