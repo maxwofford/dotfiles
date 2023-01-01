@@ -34,7 +34,7 @@ in {
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
-    channel = https://nixos.org/channels/nixos-21.11;
+    channel = https://nixos.org/channels/nixos-22.11-small;
   };
 
   # GC, optimize, free up space from nix store
