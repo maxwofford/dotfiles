@@ -27,7 +27,7 @@ in {
     # /home/msw/.dotfiles/common/server_daemon.nix
   ];
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
   networking.hostName = "forest";
   networking.firewall.allowPing = true;
   services.openssh.enable = true;
@@ -38,7 +38,7 @@ in {
   };
 
   # GC, optimize, free up space from nix store
-  nix.autoOptimiseStore = true;
+  nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
     dates = "weekly";
