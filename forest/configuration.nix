@@ -34,8 +34,9 @@ in {
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
-    channel = https://nixos.org/channels/nixos-22.11-small;
+    channel = https://nixos.org/channels/nixos-23.11;
   };
+  system.stateVersion = "23.11";
 
   # GC, optimize, free up space from nix store
   nix.settings.auto-optimise-store = true;
@@ -59,6 +60,7 @@ in {
     tldr
     nixfmt
     dig
+    tailscale
 
     google-chrome
   ];
