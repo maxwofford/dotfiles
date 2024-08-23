@@ -9,6 +9,6 @@
         echo "You find yourself wandering through a forest..."
       '';
     };
-    services.vscode-server.enable = true;
+    #services.vscode-server.enable = true;
   };
 }

@@ -14,8 +14,8 @@ in {
       ./git.nix
       ./vim.nix
       ./rofi.nix
-      ./vs-code.nix
-      ./vscode-server.nix
+      # ./vs-code.nix
+      # ./vscode-server.nix
     ];
   };
 }
