@@ -56,6 +56,7 @@ in {
     git
     mosh
     vim
+    bun
     wget
     tldr
     nixfmt
