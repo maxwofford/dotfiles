@@ -15,5 +15,8 @@
   toadstool = ''
     ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO+DriCt/V6DG2Jm8pGs9muW20DmPJA1GIrYqvrrgXN3 msw@toadstool_2021-11-24
   '';
+  dogwood = ''
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNUGx3nS9Yl1cIEIyXlM5QzkkfTG5DdFf0oM0HIp4Ec max@dogwood
+  '';
   
 }
