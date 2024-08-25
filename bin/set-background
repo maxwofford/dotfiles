@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# This script sets the desktop background. It is sourced at startup.
-
-xsetroot -solid "#073642"
