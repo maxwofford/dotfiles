@@ -44,7 +44,7 @@ alias :e='e'
 
 # remotes aliases
 alias forest='mosh msw@forest'
-alias bamboo='mosh msw@bamboo'
+alias bamboo='ssh pi@bamboo'
 
 gclone() {
   git clone $1 && cd $(basename $1 | sed -e 's/\.git//')
