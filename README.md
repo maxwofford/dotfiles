@@ -2,6 +2,8 @@
 
 This is my dotfiles repo. There are many like it, but this one is mine.
 
+Run `setup.sh` to install with rcm.
+
 I use [rcm](https://github.com/thoughtbot/rcm) to manage it. Feel free to fork
 or pull request!
 
@@ -9,7 +11,7 @@ or pull request!
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2016 Max Wofford
+Copyright (c) 2015-2022 Max Wofford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
