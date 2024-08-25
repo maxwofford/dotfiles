@@ -30,11 +30,6 @@ alias gpush='git push'
 alias gr='git remote -v'
 alias gs='git status'
 
-# git config aliases
-alias gbd='git bdone'
-alias gsave='git save'
-alias gundo='git undo'
-
 # directory aliases
 alias ls='ls --color=auto'
 alias l='ls -CF'
@@ -42,179 +37,15 @@ alias la='ls -a'
 alias ll='ls -alF'
 alias mkdir='mkdir -p'
 
-# tmux aliases
-alias tmux='tmux -2'
-alias t='tmux'
-alias ta='tmux attach -dt'
-alias tl='tmux ls'
-alias tmuxsource='tmux source-file ~/.tmux.conf'
-
-# browser aliases
-alias chrome='google-chrome'
-
-# pakage aliases
-alias agi='sudo apt install'
-alias agfi='sudo apt -f install'
-alias agar='sudo apt-get autoremove'
-alias agc='sudo apt-get clean'
-alias agu='sudo apt update'
-alias aps='aptitude search'
-alias ni='npm install'
-
 # terminal aliases
 alias quit='exit'
 alias :q='exit'
-alias quit='exit'
 alias :e='e'
 
-# info aliases
-alias os='uname -srm'
-alias now='date'
-
-# docker aliases
-alias dcu='docker-compose up'
-alias dcr='docker-compose run'
-
-# dev aliases
-alias history='cat ~/.bash_history | grep '
-alias prettyjson='python3 -m json.tool'
-alias pserv='python3 -m http.server'
-alias crone='$EDITOR ~/.dotfiles/crontab && crontab ~/.dotfiles/crontab'
-alias hubot='bin/hubot'
-alias arduino='arduino </dev/null &>/dev/null &'
-
-# docker aliases
-alias dc='docker-compose'
-alias dcr='docker-compose run'
-alias dcrs='docker-compose --service-ports run'
-alias dcb='docker-compose build'
-alias dcu='docker-compose up'
-
-# misc aliases
-alias killport='fuser -k -n tcp '
-alias pin='ping 8.8.8.8'
-alias fontreload='fc-cache -f -v'
-alias record='asciinema rec'
-alias open='nautilus'
-alias send-sms='twilio-sms'
-alias c='xclip -selection clipboard'
-alias v='xclip -selection c -o'
-alias fixwifi='sudo systemctl restart network-manager'
-alias evilsay='espeak -v mb-en1 -p 30 -g 3'
-alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
-
 # remotes aliases
-alias meowth='mosh maxw@meowth.servers.hackclub.com'
-alias palm='mosh maxw@45.55.247.34'
-
-alias pi='mosh pi@mxw4185pi.student.rit.edu'
-alias csh='mosh maxw@shell.csh.rit.edu'
-alias nitron='ssh mxw4185@nitron.se.rit.edu'
-
-# function aliases
-## transfer service from https://github.com/dutchcoders/transfer.sh/
-transfer() {
-  # write to output to tmpfile because of progress bar
-  local tmpfile=$( mktemp -t transferXXX )
-  curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile
-  cat $tmpfile
-  cat $tmpfile | xclip -selection clipboard
-  rm -f $tmpfile
-}
-
-# Extract a file
-extract() {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.7z)        7z x $1           ;;
-      *.Z)         uncompress $1     ;;
-      *.tar.bz2)   tar xvjf $1       ;;
-      *.tar.gz)    tar xvzf $1       ;;
-      *.tar.lzma)  tar --lzma xvf $1 ;;
-      *.tar.xz)    tar xvJf $1       ;;
-      *.bz2)       bunzip2 $1        ;;
-      *.gz)        gunzip $1         ;;
-      *.rar)       unrar x $1        ;;
-      *.tar)       tar xvf $1        ;;
-      *.tbz2)      tar xvjf $1       ;;
-      *.tgz)       tar xvzf $1       ;;
-      *.zip)       unzip $1          ;;
-      *)
-        echo "'$1' cannot be extracted via >extract<" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-expose() {
-  echo 'https://maxdev.localtunnel.me' | xclip -selection clipboard
-  lt --subdomain maxdev --port $1
-}
+alias forest='mosh msw@forest'
+alias bamboo='mosh msw@bamboo'
 
 gclone() {
   git clone $1 && cd $(basename $1 | sed -e 's/\.git//')
-}
-
-img-shadow() {
-  for file in "$@"
-  do
-    out=${1%.*}-shadow.${1#*.}
-    in=$1
-    if [ ! -z $2 ] ; then
-      convert $in -frame $2 $out
-      in=$out
-    fi
-    convert $in \( +clone -background black -shadow 80x8+0+0 \) \
-            +swap -background transparent -layers merge +repage $out
-    echo "Converted file : $out"
-  done
-}
-
-gif-shadow() {
-  out=${1%.*}-shadow.${1#*.}
-  in=$1
-  convert $in -coalesce -write mpr:images \
-          -background black -shadow 80x8+0+0 \
-          -bordercolor white -border 0 \
-          null: mpr:images -layers Composite \
-          $out
-  echo "Converted file : $out"
-}
-
-rename-uid() {
-  for FILE in *
-  do
-    if [ -f "$FILE" ];then
-      ID=`uuidgen`
-      EXTENSION=.${FILE##*.}
-      mv -v "$FILE" "$ID""$EXTENSION"
-    fi
-  done
-}
-
-rename-md5() {
-  for FILE in *
-  do
-    if [ -f "$FILE" ];then
-      HASH=`md5sum $FILE | awk '{ print $1 }'`
-      mv -v "$FILE" "${HASH}"
-    fi
-  done
-}
-
-overlay-on-gif() {
-  convert $1 -coalesce null: $2 -layers composite -layers optimize "converted-${1}"
-}
-
-split-csv() {
-  tail -n +2 "$1" | split -l "$2" - split_
-
-  for file in split_*
-  do
-    mv $file "${file}.csv"
-    head -n 1 "$1" > tmp_file
-    cat "${file}.csv" >> tmp_file
-    mv -f tmp_file "${file}.csv"
-  done
 }
