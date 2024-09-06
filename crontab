@@ -2,10 +2,10 @@
 
 # Config =======================================================================
 
-PATH=/usr/local/bin:/usr/bin:/bin
+PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin
 
 # Jobs =========================================================================
 
-@weekly brew update; brew upgrade; brew cleanup; brew cask cleanup >> /var/log/cron_brew.log 2>&1
-@reboot cd $HOME/Downloads && mkdir -p old && /usr/sbin/fd --changed-before 30d -x mv {} old  >> /var/log/cron_downloads.log 2>&1
+@daily brew update; brew upgrade; brew cleanup >> /tmp/log_cron_brew.log 2>&1
+@reboot cd $HOME/Downloads && mkdir -p old && /usr/sbin/fd --changed-before 30d -x mv {} old  >> /tmp/log_cron_downloads.log 2>&1
 # crontabs should end with an extra newline ====================================
