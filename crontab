@@ -9,5 +9,5 @@ PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin
 @daily brew update; brew upgrade; brew cleanup >> /tmp/log_cron_brew.log 2>&1
 @reboot cd $HOME/Downloads && mkdir -p old && /usr/sbin/fd --changed-before 30d -x mv {} old  >> /tmp/log_cron_downloads.log 2>&1
 
-@hourly $HOME/Documents/hackclub-dev/boba-drops-automation/cron.sh >> /tmp/log_boba_drops_automation.log 2>&1
+*/10 * * * * cd $HOME/Documents/hackclub-dev/boba-drops-automation && ./cron.sh > /tmp/log_boba_drops_automation.log 2>&1
 # crontabs should end with an extra newline ====================================
