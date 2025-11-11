@@ -16,6 +16,8 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ~='cd ~'
 
+alias z='z.sh'
+
 # git aliases
 alias g='git'
 alias ga='git add'
@@ -30,11 +32,18 @@ alias gpush='git push'
 alias gr='git remote -v'
 alias gs='git status'
 
-# directory aliases
-alias ls='ls --color=auto'
-alias l='ls -CF'
-alias la='ls -a'
-alias ll='ls -alF'
+# directory aliases - use GNU coreutils with solarized colors
+if command -v gls >/dev/null 2>&1; then
+  alias ls='gls --color=auto'
+  alias l='gls -CF --color=auto'
+  alias la='gls -a --color=auto'
+  alias ll='gls -alF --color=auto'
+else
+  alias ls='ls -G'
+  alias l='ls -CFG'
+  alias la='ls -aG'
+  alias ll='ls -alFG'
+fi
 alias mkdir='mkdir -p'
 
 # terminal aliases
@@ -49,3 +58,5 @@ alias bamboo='ssh pi@bamboo'
 gclone() {
   git clone $1 && cd $(basename $1 | sed -e 's/\.git//')
 }
+
+alias yt-mp3='yt-dlp --extract-audio --audio-format mp3'
