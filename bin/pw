@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'securerandom'
+key = SecureRandom.urlsafe_base64(ARGV[0]&.to_i || 32)
+puts key
+IO.popen('pbcopy', 'w') { |f| f << key.to_s }
