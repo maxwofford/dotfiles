@@ -25,6 +25,8 @@ fi
 export NVM_DIR="$HOME/.nvm"
 export RVM="$HOME/.rvm/scripts/rvm"
 
+. "$HOME/.cargo/env"
+
 ########
 # PATH #
 ########
@@ -78,3 +80,8 @@ if [ -n "$ZSH_VERSION" ]; then
 	  . "$HOME/.zshrc"
   fi
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/maxwofford/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+
