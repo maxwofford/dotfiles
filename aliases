@@ -16,7 +16,6 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ~='cd ~'
 
-alias z='z.sh'
 
 # git aliases
 alias g='git'
