@@ -2,7 +2,7 @@
 
 # Config =======================================================================
 
-PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin
+PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 
 # Jobs =========================================================================
 
