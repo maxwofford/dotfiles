@@ -7,6 +7,8 @@ PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 # Jobs =========================================================================
 
 */10 * * * * brew update; brew upgrade; brew cleanup >> /tmp/log_cron_brew.log 2>&1
+*/11 * * * * amp update >> /tmp/log_cron_amp.log 2>&1
+*/12 * * * * tldr --update >> /tmp/log_cron_tldr.log 2>&1
 @reboot cd /Users/maxwofford/Downloads && mkdir -p old && fd --max-depth 1 --type f --changed-before 30d --exclude old -x mv {} old/ >> /tmp/log_cron_downloads.log 2>&1
 
 */10 * * * * cd $HOME/Documents/hackclub-dev/boba-drops-automation && ./cron.sh > /tmp/log_boba_drops_automation.log 2>&1
