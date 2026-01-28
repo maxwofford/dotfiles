@@ -68,3 +68,11 @@ fi
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/maxwofford/.cache/lm-studio/bin"
+. "$HOME/.cargo/env"
+
+# terminal-wakatime setup
+export PATH="$HOME/.wakatime:$PATH"
+eval "$(terminal-wakatime init)"
