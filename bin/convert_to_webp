@@ -1,0 +1,120 @@
+#!/bin/bash
+
+# Convert JPG/PNG to WebP, replacing original only if smaller
+# Preserves EXIF/metadata and creation date
+# macOS version - moves originals to Trash
+
+set -euo pipefail
+
+# Check dependencies
+if ! command -v cwebp &> /dev/null; then
+    echo "Error: cwebp is required but not installed."
+    echo "Install with: brew install webp"
+    exit 1
+fi
+
+# Default quality
+QUALITY=80
+RECURSIVE=false
+
+usage() {
+    echo "Usage: $0 [-q quality] [-r] <file_or_directory> [file_or_directory...]"
+    echo "  -q  WebP quality (0-100, default: 80)"
+    echo "  -r  Process directories recursively"
+    exit 1
+}
+
+trash() {
+    osascript -e "tell application \"Finder\" to delete POSIX file \"$1\"" > /dev/null
+}
+
+while getopts "q:rh" opt; do
+    case $opt in
+        q) QUALITY="$OPTARG" ;;
+        r) RECURSIVE=true ;;
+        h) usage ;;
+        *) usage ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+if [ $# -eq 0 ]; then
+    usage
+fi
+
+convert_file() {
+    local input="$1"
+    local ext="${input##*.}"
+    local ext_lower=$(echo "$ext" | tr '[:upper:]' '[:lower:]')
+    
+    # Skip if not jpg/jpeg/png
+    if [[ "$ext_lower" != "jpg" && "$ext_lower" != "jpeg" && "$ext_lower" != "png" ]]; then
+        return
+    fi
+    
+    local output="${input%.*}.webp"
+    local temp_webp=$(mktemp).webp
+    
+    echo -n "Processing: $input ... "
+    
+    # Get original file size and dates
+    local orig_size=$(stat -f%z "$input")
+    local created_date=$(GetFileInfo -d "$input")
+    local modified_date=$(GetFileInfo -m "$input")
+    
+    # Convert to WebP with metadata preserved
+    if ! cwebp -q "$QUALITY" -metadata all "$input" -o "$temp_webp" 2>/dev/null; then
+        echo "FAILED (conversion error)"
+        rm -f "$temp_webp"
+        return
+    fi
+    
+    local new_size=$(stat -f%z "$temp_webp")
+    
+    # Compare sizes
+    if [ "$new_size" -lt "$orig_size" ]; then
+        local saved=$((orig_size - new_size))
+        local percent=$((saved * 100 / orig_size))
+        
+        # Move webp to final location
+        mv "$temp_webp" "$output"
+        
+        # Preserve timestamps
+        SetFile -d "$created_date" "$output"
+        SetFile -m "$modified_date" "$output"
+        
+        # Move original to Trash
+        trash "$(realpath "$input")"
+        
+        echo "CONVERTED (saved $saved bytes, ${percent}%)"
+    else
+        rm -f "$temp_webp"
+        echo "SKIPPED (webp not smaller: $orig_size -> $new_size)"
+    fi
+}
+
+process_path() {
+    local path="$1"
+    
+    if [ -f "$path" ]; then
+        convert_file "$path"
+    elif [ -d "$path" ]; then
+        if $RECURSIVE; then
+            find "$path" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read -r file; do
+                convert_file "$file"
+            done
+        else
+            find "$path" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read -r file; do
+                convert_file "$file"
+            done
+        fi
+    else
+        echo "Warning: $path not found"
+    fi
+}
+
+for target in "$@"; do
+    process_path "$target"
+done
+
+echo "Done!"
