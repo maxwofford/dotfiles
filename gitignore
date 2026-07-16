@@ -48,3 +48,11 @@ Thumbs.db
 ##########
 .claude/
 CLAUDE.local.md
+.mcp.json
+
+.superset/
+.workspace_env
+
+# Maestral #
+#############
+.mignore
