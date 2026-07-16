@@ -4,6 +4,17 @@
 # http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/
 # https://github.com/myfreeweb/zshuery/blob/master/zshuery.sh
 # https://github.com/ZucchiniZe/dotfiles
+#
+alias c="claude"
+alias cdsp="claude --dangerously-skip-permissions"
+ccc() {
+  local project_dir="$HOME/.claude/projects/$(pwd -P | sed 's|[^a-zA-Z0-9]|-|g')"
+  if ls "$project_dir"/*.jsonl 1>/dev/null 2>&1; then
+    claude -c --dangerously-skip-permissions
+  else
+    claude --dangerously-skip-permissions
+  fi
+}
 
 # alias aliases
 alias ae="$EDITOR ~/.aliases"
