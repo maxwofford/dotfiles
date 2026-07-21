@@ -12,7 +12,8 @@ _z_add() {
 
 # Override cd to track directories
 cd() {
-  builtin cd "$@" && _z_add
+  builtin cd "$@" || return $?
+  _z_add 2>/dev/null
 }
 
 # The z function - replaces cd entirely
