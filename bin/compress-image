@@ -1,0 +1,182 @@
+#!/bin/bash
+
+# Compress PNG/JPG/JPEG images to WebP (or AVIF where supported),
+# preserving generation metadata (ComfyUI, etc.) and timestamps.
+# Replaces original only if the result is smaller.
+
+set -euo pipefail
+
+QUALITY_WEBP=80
+QUALITY_AVIF=80
+FORMAT=auto  # auto, webp, avif
+DRY_RUN=false
+
+usage() {
+    echo "Usage: $0 [-q quality] [-f format] [-n] <file> [file...]"
+    echo "  -q  Quality (0-100, default: 80)"
+    echo "  -f  Format: auto (default), webp, avif"
+    echo "      auto = avif unless source is NovelAI (falls back to webp)"
+    echo "  -n  Dry run (show what would happen, don't trash anything)"
+    exit 1
+}
+
+while getopts "q:f:nh" opt; do
+    case $opt in
+        q) QUALITY_WEBP="$OPTARG"; QUALITY_AVIF="$OPTARG" ;;
+        f) FORMAT="$OPTARG" ;;
+        n) DRY_RUN=true ;;
+        h) usage ;;
+        *) usage ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+[ $# -eq 0 ] && usage
+
+move_to_trash() {
+    local file="$1"
+    local filename
+    filename=$(basename "$file")
+    local trash_dir="$HOME/.Trash"
+    mv "$file" "${trash_dir}/${filename}"
+}
+
+detect_source() {
+    local input="$1"
+    if exiftool -s3 -Prompt "$input" 2>/dev/null | grep -q class_type; then
+        echo "comfyui"
+    elif exiftool -s3 -Software "$input" 2>/dev/null | grep -q NovelAI; then
+        echo "novelai"
+    else
+        echo "generic"
+    fi
+}
+
+pick_format() {
+    local source="$1"
+    if [ "$FORMAT" != "auto" ]; then
+        echo "$FORMAT"
+        return
+    fi
+    if [ "$source" = "novelai" ]; then
+        echo "webp"
+    else
+        echo "avif"
+    fi
+}
+
+convert_to_webp() {
+    local input="$1"
+    local output="$2"
+    cwebp -q "$QUALITY_WEBP" -metadata all "$input" -o "$output" 2>/dev/null
+}
+
+convert_to_avif() {
+    local input="$1"
+    local output="$2"
+    avifenc -q "$QUALITY_AVIF" -s 0 "$input" "$output" >/dev/null 2>&1
+}
+
+transplant_comfyui_metadata() {
+    local input="$1"
+    local output="$2"
+    local fmt="$3"
+
+    local prompt_file
+    prompt_file=$(mktemp)
+    local workflow_file
+    workflow_file=$(mktemp)
+
+    exiftool -s3 -Prompt "$input" > "$prompt_file" 2>/dev/null
+    exiftool -s3 -Workflow "$input" > "$workflow_file" 2>/dev/null
+
+    if [ "$fmt" = "webp" ]; then
+        exiftool -overwrite_original -Model="Prompt:$(cat "$prompt_file")" "$output" 2>/dev/null
+        exiftool -overwrite_original -Make="Workflow:$(cat "$workflow_file")" "$output" 2>/dev/null
+    elif [ "$fmt" = "avif" ]; then
+        exiftool -overwrite_original -UserComment="Prompt:$(cat "$prompt_file")" "$output" 2>/dev/null
+        exiftool -overwrite_original -Make="Workflow:$(cat "$workflow_file")" "$output" 2>/dev/null
+    fi
+
+    rm -f "$prompt_file" "$workflow_file"
+}
+
+compress_file() {
+    local input="$1"
+    local ext="${input##*.}"
+    local ext_lower
+    ext_lower=$(echo "$ext" | tr '[:upper:]' '[:lower:]')
+
+    if [[ "$ext_lower" != "jpg" && "$ext_lower" != "jpeg" && "$ext_lower" != "png" ]]; then
+        return
+    fi
+
+    local source
+    source=$(detect_source "$input")
+    local fmt
+    fmt=$(pick_format "$source")
+
+    local output="${input%.*}.${fmt}"
+    local temp_file
+    temp_file=$(mktemp)."${fmt}"
+
+    echo -n "$input ... "
+
+    local orig_size
+    orig_size=$(stat -f%z "$input")
+    local created_date
+    created_date=$(GetFileInfo -d "$input")
+    local modified_date
+    modified_date=$(GetFileInfo -m "$input")
+
+    if [ "$fmt" = "webp" ]; then
+        if ! convert_to_webp "$input" "$temp_file"; then
+            echo "FAILED"
+            rm -f "$temp_file"
+            return
+        fi
+    elif [ "$fmt" = "avif" ]; then
+        if ! convert_to_avif "$input" "$temp_file"; then
+            echo "FAILED"
+            rm -f "$temp_file"
+            return
+        fi
+    fi
+
+    if [ "$source" = "comfyui" ]; then
+        transplant_comfyui_metadata "$input" "$temp_file" "$fmt"
+    fi
+
+    local new_size
+    new_size=$(stat -f%z "$temp_file")
+
+    local fmt_upper
+    fmt_upper=$(echo "$fmt" | tr '[:lower:]' '[:upper:]')
+
+    if [ "$new_size" -lt "$orig_size" ]; then
+        local saved=$((orig_size - new_size))
+        local percent=$((saved * 100 / orig_size))
+
+        if $DRY_RUN; then
+            rm -f "$temp_file"
+            echo "${fmt_upper} would save $saved bytes (${percent}%) [${source}]"
+        else
+            mv "$temp_file" "$output"
+            SetFile -d "$created_date" "$output"
+            SetFile -m "$modified_date" "$output"
+            move_to_trash "$(realpath "$input")"
+            echo "${fmt_upper} saved $saved bytes (${percent}%) [${source}]"
+        fi
+    else
+        rm -f "$temp_file"
+        echo "SKIPPED (${fmt} not smaller)"
+    fi
+}
+
+for file in "$@"; do
+    if [ -f "$file" ]; then
+        compress_file "$file"
+    else
+        echo "Warning: $file not found"
+    fi
+done
