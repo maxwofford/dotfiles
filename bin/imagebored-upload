@@ -1,0 +1,64 @@
+#!/usr/bin/env bun
+
+import { readdir, mkdir, rename } from "node:fs/promises";
+import { join, extname } from "node:path";
+import { existsSync } from "node:fs";
+
+const UPLOAD_DIR = join(process.env.HOME, "Dropbox (Maestral)/imageboard-upload");
+const DONE_DIR = join(UPLOAD_DIR, "uploaded");
+const FAIL_DIR = join(UPLOAD_DIR, "failed");
+const BASE_URL = process.env.IMAGEBORED_URL || "http://localhost:3000";
+
+const EXTENSIONS = new Set([
+  ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp",
+  ".mp4", ".webm", ".mov", ".avi", ".mkv",
+]);
+
+if (!existsSync(UPLOAD_DIR)) {
+  console.log(`Upload directory does not exist: ${UPLOAD_DIR}`);
+  process.exit(0);
+}
+
+await mkdir(DONE_DIR, { recursive: true });
+await mkdir(FAIL_DIR, { recursive: true });
+
+const limit = parseInt(process.argv[2]) || 10;
+
+const entries = await readdir(UPLOAD_DIR, { withFileTypes: true });
+const files = entries
+  .filter((e) => e.isFile() && EXTENSIONS.has(extname(e.name).toLowerCase()))
+  .slice(0, limit);
+
+if (files.length === 0) {
+  console.log(`${new Date().toISOString()} No files to upload`);
+  process.exit(0);
+}
+
+console.log(`${new Date().toISOString()} Found ${files.length} file(s) to upload`);
+
+for (const file of files) {
+  const filePath = join(UPLOAD_DIR, file.name);
+  try {
+    const form = new FormData();
+    form.append("image", Bun.file(filePath));
+    form.append("safety", "transparent");
+
+    const res = await fetch(`${BASE_URL}/posts/attachment_uploads`, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: form,
+    });
+
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`Upload failed (${res.status}): ${body}`);
+    }
+
+    const { id } = await res.json();
+    await rename(filePath, join(DONE_DIR, file.name));
+    console.log(`  OK: ${file.name} → post #${id}`);
+  } catch (err) {
+    console.error(`  FAIL: ${file.name} — ${err.message}`);
+    await rename(filePath, join(FAIL_DIR, file.name));
+  }
+}
