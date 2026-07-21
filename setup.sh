@@ -15,4 +15,6 @@ rcup aliases \
      gitconfig \
      gitignore_global \
      vimrc \
-     zprofile
+     zprofile \
+     npmrc \
+     bunfig.toml
