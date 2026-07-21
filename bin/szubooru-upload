@@ -1,0 +1,99 @@
+#!/usr/bin/env bun
+
+import { readdir, mkdir, rename } from "node:fs/promises";
+import { join, extname } from "node:path";
+import { existsSync } from "node:fs";
+
+const UPLOAD_DIR = join(process.env.HOME, "Dropbox (Maestral)/szubooru-upload");
+const DONE_DIR = join(UPLOAD_DIR, "uploaded");
+const FAIL_DIR = join(UPLOAD_DIR, "failed");
+const BASE_URL = "https://angel-trumpet.maxwofford.com/api";
+
+const envPath = join(process.env.HOME, ".config/szubooru/env");
+const envFile = await Bun.file(envPath).text();
+const env = Object.fromEntries(
+  envFile.split("\n").filter((l) => l && !l.startsWith("#")).map((l) => l.split("=", 2))
+);
+
+const user = env.SZUBOORU_USER;
+const token = env.SZUBOORU_TOKEN;
+
+if (!user || !token) {
+  console.error(`SZUBOORU_USER and SZUBOORU_TOKEN must be set in ${envPath}`);
+  process.exit(1);
+}
+
+const authHeader = "Token " + btoa(`${user}:${token}`);
+
+const EXTENSIONS = new Set([
+  ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp",
+  ".mp4", ".webm", ".mov", ".avi", ".mkv",
+  ".swf",
+]);
+
+if (!existsSync(UPLOAD_DIR)) {
+  console.log(`Upload directory does not exist: ${UPLOAD_DIR}`);
+  process.exit(0);
+}
+
+await mkdir(DONE_DIR, { recursive: true });
+await mkdir(FAIL_DIR, { recursive: true });
+
+const limit = parseInt(process.argv[2]) || 10;
+
+const entries = await readdir(UPLOAD_DIR, { withFileTypes: true });
+const files = entries
+  .filter((e) => e.isFile() && EXTENSIONS.has(extname(e.name).toLowerCase()))
+  .slice(0, limit);
+
+if (files.length === 0) {
+  console.log(`${new Date().toISOString()} No files to upload`);
+  process.exit(0);
+}
+
+console.log(`${new Date().toISOString()} Found ${files.length} file(s) to upload`);
+
+for (const file of files) {
+  const filePath = join(UPLOAD_DIR, file.name);
+  try {
+    // Step 1: Upload the file content
+    const form = new FormData();
+    form.append("content", Bun.file(filePath));
+
+    const uploadRes = await fetch(`${BASE_URL}/uploads`, {
+      method: "POST",
+      headers: { Authorization: authHeader, Accept: "application/json" },
+      body: form,
+    });
+
+    if (!uploadRes.ok) {
+      const body = await uploadRes.text();
+      throw new Error(`Upload failed (${uploadRes.status}): ${body}`);
+    }
+
+    const { token: contentToken } = await uploadRes.json();
+
+    // Step 2: Create the post
+    const postRes = await fetch(`${BASE_URL}/posts/`, {
+      method: "POST",
+      headers: {
+        Authorization: authHeader,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ contentToken, safety: "safe" }),
+    });
+
+    if (!postRes.ok) {
+      const body = await postRes.text();
+      throw new Error(`Post creation failed (${postRes.status}): ${body}`);
+    }
+
+    // Step 3: Move to uploaded/
+    await rename(filePath, join(DONE_DIR, file.name));
+    console.log(`  OK: ${file.name}`);
+  } catch (err) {
+    console.error(`  FAIL: ${file.name} — ${err.message}`);
+    await rename(filePath, join(FAIL_DIR, file.name));
+  }
+}
